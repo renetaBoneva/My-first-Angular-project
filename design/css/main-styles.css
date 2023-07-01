@@ -1,0 +1,48 @@
+body {
+    background-color: #F7F9F9;
+}
+
+nav#main-nav,
+main,
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1920px;
+}
+
+h2 {
+    text-align: center;
+    color: #601700;    
+    text-shadow: -3px 3px #D81159;
+    font-size: 3em;
+    padding-bottom: 0.5em;
+}
+
+h3 {
+    font-family: Pacifico, serif;
+    font-size: 1.8em;
+    line-height: 1;
+    color: #601700;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
