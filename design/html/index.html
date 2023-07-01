@@ -7,7 +7,8 @@
     <title>Green Planet | Home</title>
 
     <!-- Style links -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/landing-page.css">
 
     <!-- Favicon links -->
     <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
@@ -19,10 +20,10 @@
     <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
     <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="design/favicon/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="design/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="design/favicon/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="design/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="../favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
     <link rel="manifest" href="/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
@@ -30,29 +31,32 @@
 </head>
 
 <body>
-    <nav>
+    <nav id="main-nav">
         <div class="container">
             <div class="brand">
-                <a href="#">Green Planet</a>
+                <h1><a href="#">Green Planet</a></h1>
             </div>
-            <ul class="main-nav">
-                <li><a href="#">Products</a></li>
+            <ul>
+                <li><a href="#" class="regular-link">Products</a></li>
 
                 <!-- Unlogged user links -->
-                <li><a href="#" class="unlogged-user-links">Sign In</a></li>
+                <li><a href="#" class="unlogged-user-links regular-link">Sign In</a></li>
                 <li><a href="#" class="unlogged-user-links" id="login-link">Log In</a></li>
 
                 <!-- Logged user links -->
-                <li><a href="#" class="logged-user-links">Logout</a></li>
-                <li><a href="#" class="logged-user-links">My profile</a></li>
+                <!-- <li><a href="#" class="logged-user-links regular-link">Logout</a></li>
+                <li><a href="#" class="logged-user-links regular-link">My profile</a></li>
                 <li><a href="#" class="logged-user-links" id="cart-link">
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                            viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                            <path
+                            viewBox="0 0 576 512"> -->
+
+                <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+
+                <!-- <path
                                 d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" />
                         </svg>
                         CART</a>
-                </li>
+                </li> -->
             </ul>
         </div>
     </nav>
@@ -60,50 +64,56 @@
     <main>
         <div class="container">
             <div class="home-img">
-                <img src="design/images/happy-father-giving-his-small-daughter-potted-flower-while-she-s-helping-him-garden-center.jpg" alt="">
-                <a href="">Are you new in gardening?</a>
+                <img src="../images/happy-father-giving-his-small-daughter-potted-flower-while-she-s-helping-him-garden-center.jpg"
+                    alt="happy-father-giving-his-small-daughter-potted-flower-while-she-s-helping-him-garden-center">
+                <a href="https://www.bhg.com/gardening/yard/garden-care/ten-steps-to-beginning-a-garden/"
+                    target="_blank">Are you new in
+                    gardening?</a>
             </div>
+            <section>
+                <h2>Best sellers</h2>
+                <div class="best-sellers-container">
+                    <article class="product-card">
+                        <img src="../images/close-up-viola-tricolor-flowers-flower-bed_169016-20488.jpg"
+                            alt="Purple violets">
+                        <h3>Purple violets</h3>
+                        <div>
+                            <p class="price">3 <span>lv</span> </p>
+                            <form action="">
+                                <button type="submit">ADD TO CART</button>
+                            </form>
+                        </div>
+                    </article>
+                    <article class="product-card">
+                        <img src="../images/pink-red-white-violet-flowers-garden.jpg" alt="Pink violets">
+                        <h3>Pink violets</h3>
+                        <div>
+                            <p class="price">3 <span>lv</span> </p>
+                            <form action="">
+                                <button type="submit">ADD TO CART</button>
+                            </form>
+                        </div>
+                    </article>
+                    <article class="product-card">
+                        <img src="../images/assortment-beautiful-flowers-background.jpg" alt="Pink roses">
+                        <h3>Pink roses</h3>
+                        <div>
+                            <p class="price">9 <span>lv</span> </p>
+                            <form action="">
+                                <button type="submit">ADD TO CART</button>
+                            </form>
+                        </div>
+                    </article>
+                </div>
+            </section>
         </div>
-        <section>
-            <h2>Best sellers</h2>
-            <article class="product-card">
-                <img src="design/images/close-up-viola-tricolor-flowers-flower-bed_169016-20488.jpg" alt="Purple violets">
-                <h3>Purple violets</h3>
-                <div>
-                    <p class="price">3 <span>lv</span> </p>
-                    <form action="">
-                        <button type="submit">ADD TO CART</button>
-                    </form>
-                </div>
-            </article>
-            <article class="product-card">
-                <img src="design/images/pink-red-white-violet-flowers-garden.jpg" alt="Pink violets">
-                <h3>Pink violets</h3>
-                <div>
-                    <p class="price">3 <span>lv</span> </p>
-                    <form action="">
-                        <button type="submit">ADD TO CART</button>
-                    </form>
-                </div>
-            </article>
-            <article class="product-card">
-                <img src="design/images/assortment-beautiful-flowers-background.jpg" alt="Pink roses">
-                <h3>Pink roses</h3>
-                <div>
-                    <p class="price">9 <span>lv</span> </p>
-                    <form action="">
-                        <button type="submit">ADD TO CART</button>
-                    </form>
-                </div>
-            </article>
-        </section>
     </main>
 
     <footer>
         <div class="container">
             <p>Made by Reneta Boneva</p>
             <nav>
-                <ul class="social-media-links">
+                <ul id="social-media-links">
                     <li><a href="https://www.facebook.com/renettab02/">
                             <svg xmlns="http://www.w3.org/2000/svg" height="1em"
                                 viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
