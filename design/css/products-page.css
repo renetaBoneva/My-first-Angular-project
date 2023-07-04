@@ -145,10 +145,14 @@ aside form#filterForm button {
 }
 
 /* Paging */
+.paging {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .paging ul {
     display: flex;
     flex-direction: row;
-    justify-self: flex-end;
     gap: 0.5em;
 }
 
@@ -163,12 +167,12 @@ aside form#filterForm button {
     background-color: #601700;
 }
 
-.pageNum:hover+a {
+.pageNum:hover a {
     color: #601700;
 }
 
 .pageNum:hover {
-    background-color: #F7F9F9;
+    background-color: #A29368;
 }
 
 .paging svg {
@@ -177,5 +181,5 @@ aside form#filterForm button {
 
 .svg {
     font-size: 20px;
-    padding: 1em;
+    padding: 0.5em 1em;
 }
