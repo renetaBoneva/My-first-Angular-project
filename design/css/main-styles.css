@@ -40,6 +40,14 @@ h4 {
     padding: 0.5em 0;
 }
 
+.no-yet {
+    font-family: Pacifico, serif;
+    text-align: center;
+    color: #D81159;
+    text-shadow: -3px 3px #00A676;
+    font-size: 3em;
+}
+
 ul {
     list-style-type: none;
 }
