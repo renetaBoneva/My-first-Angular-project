@@ -86,14 +86,3 @@ form {
     justify-content: center;
     margin-top: 2em;
 }
-
-form button {
-    font-size: 1.6rem;
-    text-align: center;
-    font-weight: bold;
-    color: #E0D0C1;
-    background: #D81159;
-    border-radius: 1em;
-    padding: 0.5em 1.5em;
-    border: none;
-}

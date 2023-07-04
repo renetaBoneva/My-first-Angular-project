@@ -3,3 +3,8 @@
 body {
     font: 20px/1.5 Josefin Sans, sans-serif;
 }
+
+form input {
+    font: 20px/1.5 Josefin Sans, sans-serif;
+    color: #601700;
+}

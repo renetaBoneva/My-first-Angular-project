@@ -64,3 +64,31 @@ img {
 svg {
     fill: #601700;
 }
+
+.link-paraghaph,
+.link-paraghaph a{
+    text-align: center;
+    color: #D81159;
+}
+
+.link-paraghaph a:hover{
+    text-decoration: underline;
+    font-weight: 900;
+}
+
+form button {
+    font-size: 1.6rem;
+    text-align: center;
+    font-weight: bold;
+    color: #E0D0C1;
+    background: #D81159;
+    border-radius: 1em;
+    padding: 0.5em 1.5em;
+    border: none;
+}
+
+.a-must-sign {
+    font-size: 1.3em;
+    color: #D81159;
+    font-weight: 700;
+}
