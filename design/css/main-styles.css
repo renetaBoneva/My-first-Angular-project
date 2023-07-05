@@ -10,6 +10,10 @@ footer {
     justify-content: center;
 }
 
+main {
+    min-height: 90vh;
+}
+
 div.container {
     display: flex;
     align-items: center;
@@ -38,14 +42,6 @@ h4 {
     font-size: 1.4em;
     color: #601700;
     padding: 0.5em 0;
-}
-
-.no-yet {
-    font-family: Pacifico, serif;
-    text-align: center;
-    color: #D81159;
-    text-shadow: -3px 3px #00A676;
-    font-size: 3em;
 }
 
 ul {
@@ -91,4 +87,12 @@ form button {
     font-size: 1.3em;
     color: #D81159;
     font-weight: 700;
+}
+
+.no-yet {
+    font-family: Pacifico, serif;
+    text-align: center;
+    color: #D81159;
+    text-shadow: -3px 3px #00A676;
+    font-size: 3em;
 }
