@@ -1,0 +1,98 @@
+body {
+    background-color: #F7F9F9;
+}
+
+nav#main-nav,
+main,
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main {
+    min-height: 90vh;
+}
+
+div.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1920px;
+}
+
+h2 {
+    text-align: center;
+    color: #601700;    
+    text-shadow: -3px 3px #D81159;
+    font-size: 3em;
+    padding-bottom: 0.5em;
+}
+
+h3 {
+    font-family: Pacifico, serif;
+    font-size: 1.8em;
+    line-height: 1;
+    color: #601700;
+}
+
+h4 {
+    font-size: 1.4em;
+    color: #601700;
+    padding: 0.5em 0;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+svg {
+    fill: #601700;
+}
+
+.link-paraghaph,
+.link-paraghaph a{
+    text-align: center;
+    color: #D81159;
+}
+
+.link-paraghaph a:hover{
+    text-decoration: underline;
+    font-weight: 900;
+}
+
+form button {
+    font-size: 1.6rem;
+    text-align: center;
+    font-weight: bold;
+    color: #E0D0C1;
+    background: #D81159;
+    border-radius: 1em;
+    padding: 0.5em 1.5em;
+    border: none;
+}
+
+.a-must-sign {
+    font-size: 1.3em;
+    color: #D81159;
+    font-weight: 700;
+}
+
+.no-yet {
+    font-family: Pacifico, serif;
+    text-align: center;
+    color: #D81159;
+    text-shadow: -3px 3px #00A676;
+    font-size: 3em;
+}

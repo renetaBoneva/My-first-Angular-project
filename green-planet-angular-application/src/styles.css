@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('./css/reset.css');
+
+@import url('./css/typography.css');
+
+@import url('./css/main-styles.css');
+
+@import url('./css/navigation.css');
+
+@import url('./css/product-card.css');
+
+@import url('./css/footer.css');
