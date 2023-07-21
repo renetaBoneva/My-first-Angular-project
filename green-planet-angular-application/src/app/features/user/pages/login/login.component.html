@@ -4,12 +4,42 @@
 
         <section id="log-in-section">
             <h2>Log in</h2>
-            <form id="log-in-form" action="">
-                <label for="">Email:</label>
-                <input type="email">
-                <label for="">Password:</label>
-                <input type="password">
-                <button type="submit">LOG IN</button>
+            <form id="log-in-form" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+                <!-- EMAIL -->
+                <label for="email">Email:</label>
+                <input 
+                    type="email"
+                    name="email"
+                    id="email"
+                    ngModel
+                    #inputEmail="ngModel"
+                    required
+                    email
+                >
+                <!-- email errors -->
+                <ng-container *ngIf="inputEmail.touched">
+                    <p class="error-p" *ngIf="inputEmail.errors?.['required']">Email is required!</p>
+                    <p class="error-p" *ngIf="inputEmail.errors?.['email']">Invalid email!</p>
+                </ng-container>
+
+                <!-- PASSWORD -->
+                <label for="password">Password:</label>
+                <input 
+                    type="password"
+                    name="password"
+                    id="password"
+                    ngModel
+                    #inputPassword="ngModel"
+                    required
+                >
+                <!-- password errors -->
+                <ng-container *ngIf="inputPassword.touched">
+                    <p class="error-p" *ngIf="inputPassword.errors?.['required']">Password is required!</p>
+                    <!-- <p class="error-p">Invalid password!</p> -->
+                </ng-container>
+
+
+                <button type="submit" [disabled]="loginForm.invalid">LOG IN</button>
             </form>
             <div class="link-paraghaph">
                 <p>You still don’t have profile? </p>

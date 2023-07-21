@@ -11,6 +11,7 @@ import { CartComponent } from './user/pages/cart/cart.component';
 import { ProductsRoutingModule } from './products/products-routing.module';
 import { ProductDetailsComponent } from './products/pages/product-details/product-details.component';
 import { ProductsCatalogComponent } from './products/pages/products-catalog/products-catalog.component';
+import { FormsModule } from '@angular/forms';
 
  
 
@@ -19,28 +20,30 @@ import { ProductsCatalogComponent } from './products/pages/products-catalog/prod
     // products features
     LandingPageComponent,
     ProductCardComponent,
+    ProductDetailsComponent,
+    ProductsCatalogComponent,
     // user features
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
     CartComponent,
-    ProductDetailsComponent,
-    ProductsCatalogComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule,
     UserRoutingModule,
     ProductsRoutingModule
   ],
   exports: [
     // products features
     LandingPageComponent,
+    ProductDetailsComponent,
+    ProductsCatalogComponent,
     // user features
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    CartComponent,
-  ]
+    CartComponent,]
 })
 export class FeaturesModule { }

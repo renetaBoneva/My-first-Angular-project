@@ -40,3 +40,8 @@ h2 {
 #log-in-form button:hover {
     background-color: #601700;
 }
+
+.error-p{
+    text-align: center;
+    color: #D81159;
+}
