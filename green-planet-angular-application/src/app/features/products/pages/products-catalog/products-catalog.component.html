@@ -1,0 +1,153 @@
+
+<main>
+    <div class="container">
+        <aside>
+            <form action="" id="filterForm">
+                <div class="filterSection">
+                     [routerLink]="['/catalog', 123]"<h3>Category</h3>
+                    <label class="container">Outdoors
+                        <input type="checkbox" checked="checked">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Indoors
+                        <input type="checkbox" checked="checked">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Flowers
+                        <input type="checkbox" checked="checked">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Threes
+                        <input type="checkbox" checked="checked">
+                        <span class="checkmark"></span>
+                    </label>
+
+                </div>
+                <div class="filterSection priceSection">
+                    <h3>Price</h3>
+                    <label for="from">from</label>
+                    <!-- <input type="text" name="from" id="from" placeholder="0"> -->
+                    <textarea name="from" id="from" cols="30" rows="1"></textarea>
+                    <label for="to">to</label>
+                    <!-- <textarea name="to" id="to" cols="30" rows="1"></textarea> -->
+                    <input type="text" name="to" id="to" placeholder="10">
+                </div>
+                <button type="submit">Filter</button>
+            </form>
+        </aside>
+        <section>
+            <div class="products-container">
+                <article class="product-card">
+                    <div class="product-image" [routerLink]="['/catalog', 123]">
+                        <img src="assets/images/close-up-viola-tricolor-flowers-flower-bed_169016-20488.jpg"
+                            alt="Purple violets">
+                    </div>
+                    <div class="product-wrapper">
+                        <h3 [routerLink]="['/catalog', 123]">Purple violets</h3>
+                        <div>
+                            <p class="price">3 <span>lv</span> </p>
+                            <form action="">
+                                <button type="submit">ADD TO CART</button>
+                            </form>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="product-image" [routerLink]="['/catalog', 123]">
+                        <img src="assets/images/pink-red-white-violet-flowers-garden.jpg" alt="Pink violets">
+                    </div>
+                    <div class="product-wrapper">
+                        <h3 [routerLink]="['/catalog', 123]">Pink violets</h3>
+                        <div>
+                            <p class="price">3 <span>lv</span> </p>
+                            <form action="">
+                                <button type="submit">ADD TO CART</button>
+                            </form>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="product-image" [routerLink]="['/catalog', 123]">
+                        <img src="assets/images/assortment-beautiful-flowers-background.jpg" alt="Pink roses">
+                    </div>
+                    <div class="product-wrapper">
+                        <h3 [routerLink]="['/catalog', 123]">Pink roses</h3>
+                        <div>
+                            <p class="price">9 <span>lv</span> </p>
+                            <form action="">
+                                <button type="submit">ADD TO CART</button>
+                            </form>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-image" [routerLink]="['/catalog', 123]">
+                        <img src="assets/images/red-roses-textured-background.jpg" alt="Red roses">
+                    </div>
+                    <div class="product-wrapper">
+                        <h3 [routerLink]="['/catalog', 123]">Red roses</h3>
+                        <div>
+                            <p class="price">9 <span>lv</span> </p>
+                            <form action="">
+                                <button type="submit">ADD TO CART</button>
+                            </form>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="product-image" [routerLink]="['/catalog', 123]">
+                        <img src="assets/images/arrangement-beautiful-flowers-background.jpg" alt="White roses">
+                    </div>
+                    <div class="product-wrapper">
+                        <h3 [routerLink]="['/catalog', 123]">White roses</h3>
+                        <div>
+                            <p class="price">8 <span>lv</span> </p>
+                            <form action="">
+                                <button type="submit">ADD TO CART</button>
+                            </form>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="product-image" [routerLink]="['/catalog', 123]">
+                        <img src="assets/images/1000_F_166448448_fIQnywCUGNmwa7YHFt6ZIyZdnbASGONl.jpg"
+                            alt="Peach three">
+                    </div>
+                    <div class="product-wrapper">
+                        <h3 [routerLink]="['/catalog', 123]">Peach three</h3>
+                        <div>
+                            <p class="price">15 <span>lv</span> </p>
+                            <form action="">
+                                <button type="submit">ADD TO CART</button>
+                            </form>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+            <nav class="paging">
+                <ul>
+                    <li class="svg"><a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                                viewBox="0 0 448 512">
+                                <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                <path
+                                    d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+                            </svg>
+                        </a></li>
+                    <li class="pageNum"><a href="#">1</a></li>
+                    <li class="pageNum"><a href="#">2</a></li>
+                    <li class="pageNum"><a href="#">3</a></li>
+                    <li class="svg"><a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+                                <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                <path
+                                    d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
+                            </svg>
+                        </a></li>
+                </ul>
+            </nav>
+        </section>
+    </div>
+</main>
