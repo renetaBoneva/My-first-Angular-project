@@ -1,0 +1,39 @@
+/* Image section */
+.home-img {
+    position: relative;
+    width: 100%;
+}
+
+.home-img img {
+    width: 100%;
+    height: auto;
+}
+
+.home-img a {
+    position: absolute;
+    z-index: 3;
+    bottom: 10%;
+    left: 30%;
+    right: 30%;
+    padding: 0.5em 1em;
+
+    text-decoration: none;
+    text-align: center;
+    font-size: 32px;
+    color: #F7F9F9;
+    border: 1px solid #F7F9F9;
+    border-radius: 1em;
+}
+
+/* Best seller section */
+main div.container section {
+    padding: 1em 2em 2em 1em;
+}
+
+.best-sellers-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+}

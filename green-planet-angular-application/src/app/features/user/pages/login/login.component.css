@@ -1,0 +1,42 @@
+h2 {
+    padding: 0;
+}
+
+#log-in-section {
+    margin: 2em auto;
+    padding: 1em 2em 2em 2em;
+    background-color: #E0D0C1;
+    width: 40%;
+}
+
+#log-in-form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    color: #601700;
+}
+
+#log-in-form input {
+    padding: 0.5em 1em;
+    background-color: #F7F9F9;
+    border: none;
+}
+
+#log-in-form label {
+    margin-top: 1em;
+    font-weight: 600;
+}
+
+#log-in-form p {
+    text-align: right;
+    padding-top: 0.5em;
+}
+
+#log-in-form button {
+    background-color: #00A676;
+    margin: 1.5em 0;
+}
+
+#log-in-form button:hover {
+    background-color: #601700;
+}
