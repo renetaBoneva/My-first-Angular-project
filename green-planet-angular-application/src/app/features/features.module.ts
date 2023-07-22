@@ -12,6 +12,7 @@ import { ProductsRoutingModule } from './products/products-routing.module';
 import { ProductDetailsComponent } from './products/pages/product-details/product-details.component';
 import { ProductsCatalogComponent } from './products/pages/products-catalog/products-catalog.component';
 import { FormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
  
 
@@ -31,6 +32,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     RouterModule,
+    SharedModule,
     FormsModule,
     UserRoutingModule,
     ProductsRoutingModule

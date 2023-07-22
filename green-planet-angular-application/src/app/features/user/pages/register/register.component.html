@@ -2,22 +2,116 @@
     <div class="container">
         <section id="sign-in-section">
             <h2>Sign in</h2>
-            <form id="sign-in-form" action="">
-                <label for="">Email<span class="a-must-sign">*</span>:</label>
-                <input type="email">
-                <label for="">First name:</label>
-                <input type="text">
-                <label for="">Last name:</label>
-                <input type="text">
-                <label for="">Password<span class="a-must-sign">*</span>:</label>
-                <input type="password">
-                <label for="">Repeat password<span class="a-must-sign">*</span>:</label>
-                <input type="password">
-                <label for="">Address:</label>
-                <input type="text">
+            <form id="sign-in-form" #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+                <!-- EMAIL -->
+                <label for="email">Email<span class="a-must-sign">*</span>:</label>
+                <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    ngModel
+                    #inputEmail="ngModel"
+                    required
+                    email
+                >
+                <!-- email errors -->
+                <ng-container *ngIf="inputEmail.touched">
+                    <p class="errors-p" *ngIf="inputEmail.errors?.['required']">Email is required!</p>
+                    <p class="errors-p" *ngIf="inputEmail.errors?.['email']">Invalid email!</p>
+                </ng-container>
+
+                <!-- FIRST NAME -->
+                <label for="firstName">First name<span class="a-must-sign">*</span>:</label>
+                <input
+                    type="text"
+                    name="firstName"
+                    id="firstName"
+                    ngModel
+                    #inputFirstName="ngModel"
+                    minlength="2"
+                    >
+                <!-- first name errors -->
+                <ng-container *ngIf="inputFirstName.touched">
+                    <p class="errors-p" *ngIf="inputFirstName.errors?.['required']">First name is required!</p>
+                    <p class="errors-p" *ngIf="inputFirstName.errors?.['minlength']">Invalid first name!</p>
+                </ng-container>
+
+                <!-- LAST NAME  -->
+                <label for="lastName">Last name<span class="a-must-sign">*</span>:</label>
+                <input
+                    type="text"
+                    name="lastName"
+                    id="lastName"
+                    ngModel
+                    #inputLastName="ngModel"
+                    minlength="2"
+                    >
+                <!-- last name errors -->
+                <ng-container *ngIf="inputLastName.touched">
+                    <p class="errors-p" *ngIf="inputLastName.errors?.['required']">Last name is required!</p>
+                    <p class="errors-p" *ngIf="inputLastName.errors?.['minlength']">Invalid last name!</p>
+                </ng-container>
+    
+
+                <!-- PASSWORD -->
+                <label for="password">Password<span class="a-must-sign">*</span>:</label>
+                <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    ngModel
+                    #inputPassword="ngModel"
+                    required
+                    minlength="5"
+                    >                
+                <!-- password errors -->
+                <ng-container *ngIf="inputPassword.touched">
+                    <p class="errors-p" *ngIf="inputPassword.errors?.['required']">Password is required!</p>
+                    <p class="errors-p" *ngIf="inputPassword.errors?.['minlength']">
+                        Password must be at least {{inputPassword.errors?.['minlength']['requiredLength']}} characters!
+                    </p>
+                </ng-container>
+
+                <!-- REPEAT PASSWORD -->
+                <label for="rePass">Repeat password<span class="a-must-sign">*</span>:</label>
+                <input
+                    type="password"
+                    name="rePass"
+                    id="rePass"
+                    ngModel
+                    #inputRePass="ngModel"
+                    required
+                    [appPassValidator]="inputPassword.value"
+                    >                             
+                    <!-- repeat password errors -->
+                <ng-container *ngIf="inputRePass.touched">
+                    <p class="errors-p" *ngIf="inputRePass.errors?.['required']">Repeat password is required!</p>
+                    <p class="errors-p" *ngIf="inputRePass.errors?.['isPassMismatch']">Repeat password don't match with password!</p>
+                </ng-container>
+                
+                <!-- ADDRESS -->
+                <label for="address">Address<span class="a-must-sign">*</span>:</label>
+                <input
+                    type="text"
+                    name="address"
+                    id="address"
+                    ngModel
+                    #inputAddress="ngModel"
+                    required
+                    minlength="4"
+                    >                           
+                <!-- address errors -->
+                <ng-container *ngIf="inputAddress.touched">
+                    <p class="errors-p" *ngIf="inputAddress.errors?.['required']">Address is required!</p>
+                    <p class="errors-p" *ngIf="inputAddress.errors?.['minlength']">
+                        Address must be at least {{inputAddress.errors?.['minlength']['requiredLength']}} characters!
+                    </p>
+                </ng-container>
+
                 <p><span class="a-must-sign">*</span> this field is a must</p>
-                <button type="submit">SIGN IN</button>
+                <button type="submit" [disabled]="registerForm.invalid">SIGN IN</button>
             </form>
+            <!-- {{ registerForm | json }} -->
             <div class="link-paraghaph">
                 <p>You already have profile?</p>
                 <a routerLink="/login">Log in here!</a>

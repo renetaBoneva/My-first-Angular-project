@@ -272,6 +272,7 @@
             "orderNumber": 10101,
             "ownerId": 1,
             "madeOnDate": "",
+            "address":"Burgas, Bulgaria",
             "products": [
                 {
                     "_id": 67546,
