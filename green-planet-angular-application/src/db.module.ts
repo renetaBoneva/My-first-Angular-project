@@ -1,4 +1,4 @@
-{
+export let db = {
     "products": [
         {
             "_id": 67530,
@@ -80,7 +80,7 @@
             "title": "Cherry tree",
             "price": 18,
             "category": [
-                "tree",
+                "trees",
                 "outdoor"
             ],
             "imgName": "cherry-tree-with-ripe-cherries.jpg",
@@ -92,7 +92,7 @@
             "title": "Peach tree",
             "price": 15,
             "category": [
-                "tree",
+                "trees",
                 "outdoor"
             ],
             "imgName": "1000_F_166448448_fIQnywCUGNmwa7YHFt6ZIyZdnbASGONl.jpg",
@@ -104,7 +104,7 @@
             "title": "Fig tree",
             "price": 12,
             "category": [
-                "tree",
+                "trees",
                 "outdoor"
             ],
             "imgName": "closeup-shot-unripe-figs-hanging-from-branch-fig-tree-garden.jpg",
@@ -128,7 +128,7 @@
             "title": "Olive tree",
             "price": 20,
             "category": [
-                "tree",
+                "trees",
                 "outdoor"
             ],
             "imgName": "olive-tree-branch.jpg",
@@ -140,7 +140,7 @@
             "title": "Plum tree",
             "price": 11,
             "category": [
-                "tree",
+                "trees",
                 "outdoor"
             ],
             "imgName": "plum-branch-with-juicy-fruits-sunlight-plum-garden.jpg",
@@ -152,7 +152,7 @@
             "title": "Pine tree",
             "price": 25,
             "category": [
-                "tree",
+                "trees",
                 "outdoor"
             ],
             "imgName": "tree.jpg",
@@ -164,7 +164,7 @@
             "title": "Evergreen boxwood",
             "price": 23,
             "category": [
-                "tree",
+                "trees",
                 "outdoor"
             ],
             "imgName": "view-evergreen-boxwood-shrubs.jpg",
@@ -176,7 +176,7 @@
             "title": "Lemon tree",
             "price": 19,
             "category": [
-                "tree",
+                "trees",
                 "outdoor"
             ],
             "imgName": "yellow-citrus-lemon-fruits-tree-branch-with-green-leaves-garden-closeup.jpg",
@@ -225,7 +225,7 @@
             "title": "Almond tree",
             "price": 12,
             "category": [
-                "tree",
+                "trees",
                 "outdoor"
             ],
             "imgName": "How-to-Grow-and-Care-for-Almond-Trees-Cover.jpg",
@@ -241,6 +241,7 @@
             "firstName": "Reneta",
             "lastName": "Boneva",
             "address": "Plovdiv, Bulgaria",
+            "myCart": [],
             "orders": [
                 {
                     "_id": 10101
@@ -254,6 +255,7 @@
             "firstName": "Zhak",
             "lastName": "Semizov",
             "address": "Varna, Bulgaria",
+            "myCart": [],
             "orders": []
         },
         {
@@ -263,6 +265,7 @@
             "firstName": "Irina",
             "lastName": "Boneva",
             "address": "Burgas, Bulgaria",
+            "myCart": [],
             "orders": []
         }
     ],

@@ -55,7 +55,7 @@ aside form#filterForm h3 {
 }
 
 /* Hide the browser's default checkbox */
-.container input {
+.container input[type=checkbox] {
     position: absolute;
     opacity: 0;
     cursor: pointer;
@@ -117,7 +117,10 @@ aside form#filterForm input[type=text] {
     font-size: 20px;
     width: 100%;
     background-color: #E0D0C1;
-    color: #A76D60;
+    color: #601700;
+    padding: 0.3em 0.5em;
+    border-radius: 0.5em;
+    border: none;
 }
 
 aside form#filterForm button {
@@ -126,6 +129,7 @@ aside form#filterForm button {
     color: #F7F9F9;
     font-size: 20px;
     padding: 0.5em 1em;
+    margin-top: 1em;
     border-radius: 1em;
 }
 

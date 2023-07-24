@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { db } from 'src/db.module';
+import { Product } from '../../types/Product';
 
 @Component({
   selector: 'app-product-details',
@@ -7,17 +9,19 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
-  // product;
+  id: number | null = null;
+  product: Product | null = null;
 
   constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getProductDetails();
   }
-
+  
   getProductDetails() {
-    const id = this.activatedRoute.snapshot.params['id'];
-    console.log(id);
+    this.id = this.activatedRoute.snapshot.params['id'];
     
+    // Temporary db TODO: get data from api service
+    this.product = db.products.filter(product => product._id == this.id)[0];
   }
 }

@@ -1,20 +1,19 @@
-
 <main>
     <div class="container">
-        <section id="my-profile-section">
+        <section id="my-profile-section" *ngIf="!!userInfo">
             <h2>My profile</h2>
             <article>
                 <p class="label">Email:</p>
-                <p class="info">reneta.boneva@abv.bg</p>
+                <p class="info">{{userInfo.email}}</p>
 
                 <p class="label">First name:</p>
-                <p class="info">Reneta</p>
+                <p class="info">{{userInfo.firstName}}</p>
 
                 <p class="label">Last name:</p>
-                <p class="info">Boneva</p>
+                <p class="info">{{userInfo.lastName}}</p>
 
                 <p class="label">Address:</p>
-                <p class="info">Burgas, Bulgaria</p>
+                <p class="info">{{userInfo.address}}</p>
             </article>
         </section>
         <section class="my-orders-section">

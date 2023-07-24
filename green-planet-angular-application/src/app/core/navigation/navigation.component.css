@@ -38,23 +38,6 @@ nav#main-nav {
     color: rgba(96, 23, 0, 0.5);
 }
 
-#login-link{
-    font-size: 24px;
-    text-align: center;
-    font-weight: bold;
-    color: #601700;
-    background-color: #00A676;
-    border-radius: 1em;
-    padding: 0.5em 1em;
-}
-
-#login-link:hover {
-    text-decoration: none;
-    background: #D81159;
-    text-decoration: none;
-    color: #601700;
-}
-
 #cart-link {
     font: 20px/0 Josefin Sans, sans-serif;
     font-size: 24px;
@@ -68,4 +51,15 @@ nav#main-nav {
 
 #cart-link svg {
     fill: #E0D0C1;
+}
+
+#cart-link:hover {
+    text-decoration: none;
+    background: #00A676;
+    text-decoration: none;
+    color: #601700;
+}
+
+#cart-link:hover svg {
+    fill: #601700;
 }

@@ -7,7 +7,7 @@ import { ProfileComponent } from './user/pages/profile/profile.component';
 import { RouterModule } from '@angular/router';
 import { UserRoutingModule } from './user/pages/user-routing.module';
 import { ProductCardComponent } from './products/components/product-card/product-card.component';
-import { CartComponent } from './user/pages/cart/cart.component';
+import { CartComponent } from './products/pages/cart/cart.component';
 import { ProductsRoutingModule } from './products/products-routing.module';
 import { ProductDetailsComponent } from './products/pages/product-details/product-details.component';
 import { ProductsCatalogComponent } from './products/pages/products-catalog/products-catalog.component';
@@ -40,12 +40,14 @@ import { SharedModule } from '../shared/shared.module';
   exports: [
     // products features
     LandingPageComponent,
+    ProductCardComponent,
     ProductDetailsComponent,
     ProductsCatalogComponent,
     // user features
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    CartComponent,]
+    CartComponent,
+  ]
 })
 export class FeaturesModule { }

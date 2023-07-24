@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { db } from 'src/db.module';
+import { UserDetails } from '../../types/UserDetails';
 
 @Component({
   selector: 'app-login',
@@ -8,11 +10,23 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent {
 
-  login(form: NgForm){
-    if(form.invalid) {
+  login(form: NgForm) {
+    if (form.invalid) {
       return;
     }
+
+    // Temporary db TODO: get data from api service
+    // show server errors!   
+    const usersDB: UserDetails[] | [] = db.users;
+    const userFromDB = usersDB.filter(user => user.email == form.value.email && user.password == form.value.password)[0];
+    const isValidUser = !!userFromDB;
     
-    console.log(form.value);    
+    if (isValidUser) {
+      localStorage.setItem('user', JSON.stringify(userFromDB));
+      console.log('Valid form');
+    } else {
+      console.log('Invalid form');      
+    }
+
   }
 }

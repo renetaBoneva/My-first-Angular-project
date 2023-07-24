@@ -16,8 +16,8 @@
                 >
                 <!-- email errors -->
                 <ng-container *ngIf="inputEmail.touched">
-                    <p class="errors-p" *ngIf="inputEmail.errors?.['required']">Email is required!</p>
-                    <p class="errors-p" *ngIf="inputEmail.errors?.['email']">Invalid email!</p>
+                    <p class="error-p" *ngIf="inputEmail.errors?.['required']">Email is required!</p>
+                    <p class="error-p" *ngIf="inputEmail.errors?.['email']">Invalid email!</p>
                 </ng-container>
 
                 <!-- FIRST NAME -->
@@ -32,8 +32,8 @@
                     >
                 <!-- first name errors -->
                 <ng-container *ngIf="inputFirstName.touched">
-                    <p class="errors-p" *ngIf="inputFirstName.errors?.['required']">First name is required!</p>
-                    <p class="errors-p" *ngIf="inputFirstName.errors?.['minlength']">Invalid first name!</p>
+                    <p class="error-p" *ngIf="inputFirstName.errors?.['required']">First name is required!</p>
+                    <p class="error-p" *ngIf="inputFirstName.errors?.['minlength']">Invalid first name!</p>
                 </ng-container>
 
                 <!-- LAST NAME  -->
@@ -48,8 +48,8 @@
                     >
                 <!-- last name errors -->
                 <ng-container *ngIf="inputLastName.touched">
-                    <p class="errors-p" *ngIf="inputLastName.errors?.['required']">Last name is required!</p>
-                    <p class="errors-p" *ngIf="inputLastName.errors?.['minlength']">Invalid last name!</p>
+                    <p class="error-p" *ngIf="inputLastName.errors?.['required']">Last name is required!</p>
+                    <p class="error-p" *ngIf="inputLastName.errors?.['minlength']">Invalid last name!</p>
                 </ng-container>
     
 
@@ -66,8 +66,8 @@
                     >                
                 <!-- password errors -->
                 <ng-container *ngIf="inputPassword.touched">
-                    <p class="errors-p" *ngIf="inputPassword.errors?.['required']">Password is required!</p>
-                    <p class="errors-p" *ngIf="inputPassword.errors?.['minlength']">
+                    <p class="error-p" *ngIf="inputPassword.errors?.['required']">Password is required!</p>
+                    <p class="error-p" *ngIf="inputPassword.errors?.['minlength']">
                         Password must be at least {{inputPassword.errors?.['minlength']['requiredLength']}} characters!
                     </p>
                 </ng-container>
@@ -85,8 +85,8 @@
                     >                             
                     <!-- repeat password errors -->
                 <ng-container *ngIf="inputRePass.touched">
-                    <p class="errors-p" *ngIf="inputRePass.errors?.['required']">Repeat password is required!</p>
-                    <p class="errors-p" *ngIf="inputRePass.errors?.['isPassMismatch']">Repeat password don't match with password!</p>
+                    <p class="error-p" *ngIf="inputRePass.errors?.['required']">Repeat password is required!</p>
+                    <p class="error-p" *ngIf="inputRePass.errors?.['isPassMismatch']">Repeat password don't match with password!</p>
                 </ng-container>
                 
                 <!-- ADDRESS -->
@@ -102,8 +102,8 @@
                     >                           
                 <!-- address errors -->
                 <ng-container *ngIf="inputAddress.touched">
-                    <p class="errors-p" *ngIf="inputAddress.errors?.['required']">Address is required!</p>
-                    <p class="errors-p" *ngIf="inputAddress.errors?.['minlength']">
+                    <p class="error-p" *ngIf="inputAddress.errors?.['required']">Address is required!</p>
+                    <p class="error-p" *ngIf="inputAddress.errors?.['minlength']">
                         Address must be at least {{inputAddress.errors?.['minlength']['requiredLength']}} characters!
                     </p>
                 </ng-container>

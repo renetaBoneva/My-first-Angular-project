@@ -40,3 +40,7 @@ h2 {
 #sign-in-form button:hover {
     background-color: #601700;
 }
+
+.error-p{
+    color: #D81159;
+}

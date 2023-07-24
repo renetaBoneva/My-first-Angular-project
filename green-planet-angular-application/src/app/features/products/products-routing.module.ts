@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+
 import { ErrorPageComponent } from 'src/app/shared/components/error-page/error-page.component';
 import { ProductsCatalogComponent } from './pages/products-catalog/products-catalog.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
+import { CartComponent } from './pages/cart/cart.component';
 
 const routes: Routes = [
     {
@@ -13,6 +15,7 @@ const routes: Routes = [
             { path: ':id', component: ProductDetailsComponent },
         ]
     },
+    {path: 'my-cart', component: CartComponent},
     { path: "**", component: ErrorPageComponent },
 ]
 
