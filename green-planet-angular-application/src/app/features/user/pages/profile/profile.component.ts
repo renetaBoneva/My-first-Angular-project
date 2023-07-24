@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
 import { UserDetails } from '../../types/UserDetails';
 import { db } from 'src/db.module';
+import { environment } from 'src/environments/environment.development';
 
 @Component({
   selector: 'app-profile',
@@ -11,7 +13,7 @@ export class ProfileComponent implements OnInit {
   userInfo: UserDetails | undefined = undefined;
 
   ngOnInit(): void {
-    const ls = localStorage.getItem('user');
+    const ls = localStorage.getItem(environment.USER_KEY_LOCAL_STORAGE);
     // Temporary db TODO: get data from api service
     const usersDB = db.users;
 

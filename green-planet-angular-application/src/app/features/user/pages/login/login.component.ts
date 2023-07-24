@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+
 import { db } from 'src/db.module';
+import { environment } from 'src/environments/environment.development';
 import { UserDetails } from '../../types/UserDetails';
 
 @Component({
@@ -22,7 +24,11 @@ export class LoginComponent {
     const isValidUser = !!userFromDB;
     
     if (isValidUser) {
-      localStorage.setItem('user', JSON.stringify(userFromDB));
+      localStorage.setItem(
+        environment.USER_KEY_LOCAL_STORAGE, 
+        JSON.stringify(userFromDB)
+        );
+        
       console.log('Valid form');
     } else {
       console.log('Invalid form');      
