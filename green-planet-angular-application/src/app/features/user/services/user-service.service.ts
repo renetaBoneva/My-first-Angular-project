@@ -36,10 +36,9 @@ export class UserService{
 
   login(form: NgForm) {
     // Temporary db TODO: get data from api service
-    // todo: show server errors!   
     const usersDB: UserDetails[] | [] = db.users;
     const userFromDB = usersDB.filter(user => user.email == form.value.email && user.password == form.value.password);
-
+    
     if (userFromDB.length === 1) {
       // const jsUser: UserLocalStorage = userFromDB[0] as UserLocalStorage;
       const { _id, email, myCart } = userFromDB[0];
@@ -48,11 +47,12 @@ export class UserService{
       localStorage.setItem(
         environment.USER_KEY_LOCAL_STORAGE,
         JSON.stringify(jsUser)
-      );
-      this.user = jsUser;
-    } else {
+        );
+        this.user = jsUser;
+        this.router.navigate(['/'])
+      } else {
+      // todo: show server errors!   
       console.log('Invalid form');
     }
-    this.router.navigate(['/'])
   }
 }
