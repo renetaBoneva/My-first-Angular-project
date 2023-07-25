@@ -1,140 +1,60 @@
-
 <main>
     <div class="container">
         <h2>My cart</h2>
         <!-- If there are no products in the cart -->
-        <!-- <p class="no-yet">No products yet</p> -->
-        
-        <section class="cart-products">
-            <article class="product-card">
-                <div class="product-image">
-                    <img src="assets/images/assortment-beautiful-flowers-background.jpg"
-                        alt="Pink roses">
-                </div>
-                <div class="product-wrapper">
-                    <div>
-                        <h3>Pink roses</h3>
-                        <ul>
-                            <li class="minusCount">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                                    viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                    <path
-                                        d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z" />
-                                </svg>
-                            </li>
-                            <li class="productCount">1</li>
-                            <li class="plusCount">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                                    viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                    <path
-                                        d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
-                                </svg>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <p class="price">
-                            9
-                            <span class="currency">lv</span>
-                        </p>
-                        <p class="price">
-                            <span>TOTAL:</span>
-                            9
-                            <span class="currency">lv</span>
-                        </p>
-                    </div>
-                </div>
-            </article>
+        <p class="no-yet" *ngIf="!areProducts">No products yet</p>
 
-            <article class="product-card">
-                <div class="product-image">
-                    <img src="assets/images/arrangement-beautiful-flowers-background.jpg"
-                        alt="White roses">
-                </div>
-                <div class="product-wrapper">
-                    <div>
-                        <h3>White roses</h3>
-                        <ul>
-                            <li class="minusCount">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                                    viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                    <path
-                                        d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z" />
-                                </svg>
-                            </li>
-                            <li class="productCount">1</li>
-                            <li class="plusCount">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                                    viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                    <path
-                                        d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
-                                </svg>
-                            </li>
-                        </ul>
+        <ng-container *ngIf="areProducts">
+            <section class="cart-products">
+                <article class="product-card" *ngFor="let product of cartProducts">
+                    <div class="product-image">
+                        <img src="assets/images/{{product.imgName}}" alt="{{product.title}}">
                     </div>
-                    <div>
-                        <p class="price">
-                            8
-                            <span class="currency">lv</span>
-                        </p>
-                        <p class="price">
-                            <span>TOTAL:</span>
-                            8
-                            <span class="currency">lv</span>
-                        </p>
+                    <div class="product-wrapper">
+                        <div>
+                            <h3>{{product.title}}</h3>
+                            <ul>
+                                <li class="minusCount">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                        <path
+                                            d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z" />
+                                    </svg>
+                                </li>
+                                <li class="productCount">{{product.count}}</li>
+                                <li class="plusCount">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                        <path
+                                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+                                    </svg>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p class="price">
+                                {{product.price}}
+                                <span class="currency">lv</span>
+                            </p>
+                            <p class="price">
+                                <span>TOTAL:</span>
+                                {{product.price*product.count}}
+                                <span class="currency">lv</span>
+                            </p>
+                        </div>
                     </div>
-                </div>
-            </article>
+                </article>
+            </section>
 
-            <article class="product-card">
-                <div class="product-image">
-                    <img src="assets/images/close-up-viola-tricolor-flowers-flower-bed_169016-20488.jpg"
-                        alt="Purple violets">
-                </div>
-                <div class="product-wrapper">
-                    <div>
-                        <h3>Purple violets</h3>
-                        <ul>
-                            <li class="minusCount">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                                    viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                    <path
-                                        d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z" />
-                                </svg>
-                            </li>
-                            <li class="productCount">5</li>
-                            <li class="plusCount">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                                    viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                    <path
-                                        d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
-                                </svg>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <p class="price">
-                            3
-                            <span class="currency">lv</span>
-                        </p>
-                        <p class="price">
-                            <span>TOTAL:</span>
-                            15
-                            <span class="currency">lv</span>
-                        </p>
-                    </div>
-                </div>
-            </article>
-        </section>
+            <p id="total">
+                <span id="total-span">TOTAL:</span>
+                {{orderTotal}}
+                <span class="currency">lv</span>
+            </p>
 
-        <p id="total">
-            <span id="total-span">TOTAL:</span>
-            32
-            <span class="currency">lv</span>
-        </p>
-
-        <form action="#" method="get">
-            <button type="submit">CONTINUE ORDER</button>
-        </form>
+            <form action="#" method="get">
+                <button type="submit">CONTINUE ORDER</button>
+            </form>
+        </ng-container>
     </div>
 </main>

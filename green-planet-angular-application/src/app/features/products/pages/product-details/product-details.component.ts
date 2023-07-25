@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { db } from 'src/db.module';
-import { Product } from '../../types/Product';
+import { ProductDetails } from '../../types/ProductDetails';
 
 @Component({
   selector: 'app-product-details',
@@ -10,7 +10,7 @@ import { Product } from '../../types/Product';
 })
 export class ProductDetailsComponent implements OnInit {
   id: number | null = null;
-  product: Product | null = null;
+  product: ProductDetails | null = null;
 
   constructor(private activatedRoute: ActivatedRoute) { }
 

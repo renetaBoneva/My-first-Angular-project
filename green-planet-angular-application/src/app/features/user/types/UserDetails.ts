@@ -1,3 +1,5 @@
+import { OrderProduct } from "../../products/types/OrderProduct";
+
 export interface UserDetails {
     "_id": number,
     "email": string ,
@@ -6,5 +8,5 @@ export interface UserDetails {
     "lastName": string ,
     "address": string,
     "orders": Object[],
-    "myCart": Object[]
+    "myCart": OrderProduct[]
 }

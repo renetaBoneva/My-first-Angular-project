@@ -11,8 +11,9 @@ export class RegisterComponent {
     if(form.invalid) {
       return;
     }
-
-    // handle register 
+    
+    // todo: show server errors!   
+    // todo: handle register 
     console.log(form.value);    
   }
 }

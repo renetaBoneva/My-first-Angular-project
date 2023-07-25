@@ -149,6 +149,14 @@ aside form#filterForm button {
     flex: 1 0 40%;
 }
 
+.product-wrapper div{
+    cursor: default;
+}
+
+.product-wrapper button{
+    cursor: pointer;
+}
+
 /* Paging */
 .paging {
     display: flex;

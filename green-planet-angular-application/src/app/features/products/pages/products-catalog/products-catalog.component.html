@@ -40,15 +40,15 @@
         <section>
 
             <!-- WITHOUT ng-template -->
-            <!--<div class="products-container">
+            <div class="products-container">
                 <ng-container  *ngFor="let product of products">
                     <app-product-card [product]="product"></app-product-card>
                 </ng-container>
-            </div> -->
+            </div>
 
 
             <!-- WITH ng-template -->
-            <div class="products-container">
+            <!-- <div class="products-container">
                 <ng-container *ngFor="let product of products">
                     <ng-container *ngTemplateOutlet="productCardTemplate; context: { product: product }"></ng-container>
                 </ng-container>
@@ -63,13 +63,11 @@
                         <h3 [routerLink]="['/catalog', product._id]">{{product.title}}</h3>
                         <div>
                             <p class="price">{{product.price}} <span>lv</span> </p>
-                            <form action="">
-                                <button type="submit">ADD TO CART</button>
-                            </form>
+                                <button >ADD TO CART</button>
                         </div>
                     </div>
                 </article>
-            </ng-template>
+            </ng-template> -->
 
             <nav class="paging">
                 <ul>

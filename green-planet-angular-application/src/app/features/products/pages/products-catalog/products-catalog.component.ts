@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { db } from 'src/db.module';
-import { Product } from '../../types/Product';
+import { ProductDetails } from '../../types/ProductDetails';
 
 @Component({
   selector: 'app-products-catalog',
@@ -10,7 +10,7 @@ import { Product } from '../../types/Product';
 })
 
 export class ProductsCatalogComponent implements OnInit{
-  products: Product[] | null = null;
+  products: ProductDetails[] | null = null;
 
   constructor() {}
 

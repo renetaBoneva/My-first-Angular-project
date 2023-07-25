@@ -1,38 +1,29 @@
-<!-- <ng-container>
-    <article class="product-card" *ngIf="product">
-        <div class="product-image" [routerLink]="['/catalog', product._id]">
-            <img src="assets/images/{{product.imgName}}" alt="{{product.title}}">
-        </div>
-        <div class="product-wrapper">
-            <h3 [routerLink]="['/catalog', product._id]">{{product.title}}</h3>
-            <div>
-                <p class="price">{{product.price}} <span>lv</span> </p>
-                <form action="">
-                    <button type="submit">ADD TO CART</button>
-                </form>
-            </div>
-        </div>
-    </article>
-</ng-container> -->
+<ng-container>
+  <article class="product-card" *ngIf="product">
+    <div class="product-image" [routerLink]="['/catalog', product._id]">
+      <img src="assets/images/{{product.imgName}}" alt="{{product.title}}">
+    </div>
+    <div class="product-wrapper">
+      <h3 [routerLink]="['/catalog', product._id]">{{product.title}}</h3>
+      <div>
+        <p class="price">{{product.price}} <span>lv</span> </p>
+        <button (click)="addProductToCart()">ADD TO CART</button>
+      </div>
+    </div>
+  </article>
+</ng-container>
 
-<ng-template>
-    <!-- Тук сложете съдържанието, което искате да се рендерира -->
-    <article class="product-card" *ngIf="product">
-      <!-- Вашите елементи на продуктите -->
-      <div class="product-image" [routerLink]="['/catalog', product._id]">
-        <!-- Съдържание за изображението -->
-        <img src="assets/images/{{product.imgName}}" alt="{{product.title}}">
+<!-- <ng-template>
+  <article class="product-card" *ngIf="product">
+    <div class="product-image" [routerLink]="['/catalog', product._id]">
+      <img src="assets/images/{{product.imgName}}" alt="{{product.title}}">
+    </div>
+    <div class="product-wrapper">
+      <h3 [routerLink]="['/catalog', product._id]">{{product.title}}</h3>
+      <div>
+        <p class="price">{{product.price}} <span>lv</span> </p>
+        <button (click)="addProductToCart()">ADD TO CART</button>
       </div>
-      <div class="product-wrapper">
-        <h3 [routerLink]="['/catalog', product._id]">{{product.title}}</h3>
-        <div>
-          <p class="price">{{product.price}} <span>lv</span> </p>
-          <form action="">
-            <!-- Съдържание за формата или други елементи -->
-            <button type="submit">ADD TO CART</button>
-          </form>
-        </div>
-      </div>
-    </article>
-  </ng-template>
-  
+    </div>
+  </article>
+</ng-template> -->
