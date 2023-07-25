@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from 'src/app/features/user/services/user-service.service';
 
 @Component({
   selector: 'app-navigation',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent {
+
+  constructor(private userService: UserService) { }
+
+  get isLogged(): boolean {
+    return this.userService.isLogged;
+  }
 
 }
