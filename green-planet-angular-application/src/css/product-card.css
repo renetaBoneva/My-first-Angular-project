@@ -48,3 +48,9 @@
     padding: 0.5em 1em;
     border: none;
 }
+
+.product-wrapper div button:hover {
+    color: #D81159;
+    background: #E0D0C1;
+    border: 3px solid #601700;
+}

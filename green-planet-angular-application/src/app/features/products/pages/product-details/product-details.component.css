@@ -35,13 +35,13 @@
     justify-content: space-between;
 }
 
-#product-info form {
+#product-info div.add-Btn {
     display: flex;
     justify-content: center;
     margin-top: 2em;
 }
 
-#product-info form button {
+#product-info button {
     font-size: 1.5rem;
     text-align: center;
     font-weight: bold;
@@ -50,6 +50,12 @@
     border-radius: 1em;
     padding: 0.5em 1.5em;
     border: none;
+}
+
+#product-info button:hover {
+    color: #D81159;
+    background: #E0D0C1;
+    border: 3px solid #601700;
 }
 
 .price {

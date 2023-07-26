@@ -86,3 +86,17 @@ form {
     justify-content: center;
     margin-top: 2em;
 }
+
+.link-paraghaph{
+    margin-top: 1em;
+    font-size: 25px;
+    font-weight: 500;
+    color: #00A676; 
+    cursor: pointer;   
+}
+
+
+.link-paraghaph:hover {
+    color: #D81159;
+    text-decoration: underline;
+}

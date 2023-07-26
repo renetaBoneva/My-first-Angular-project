@@ -60,6 +60,7 @@ export default class CartComponent implements OnInit {
   }
 
   sumOrderTotal() {
+    this.orderTotal = 0;
     this.cartProducts.map(p => this.orderTotal += p.price * p.count);
   }
 
@@ -67,7 +68,5 @@ export default class CartComponent implements OnInit {
     this.cartProducts.length > 0
       ? this.areProducts = true
       : this.areProducts = false;
-    console.log(this.areProducts);
-    
   }
 }

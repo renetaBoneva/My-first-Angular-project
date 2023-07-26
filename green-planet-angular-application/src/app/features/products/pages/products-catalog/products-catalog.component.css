@@ -126,11 +126,18 @@ aside form#filterForm input[type=text] {
 aside form#filterForm button {
     border: none;
     background-color: #601700;
-    color: #F7F9F9;
+    color: #E0D0C1;
     font-size: 20px;
     padding: 0.5em 1em;
     margin-top: 1em;
     border-radius: 1em;
+}
+
+
+aside form#filterForm button:hover {
+    border: 3px solid #601700;
+    background-color: #E0D0C1;
+    color: #601700;
 }
 
 /* -------------------------

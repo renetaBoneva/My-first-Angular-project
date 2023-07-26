@@ -14,7 +14,7 @@ import { OrderProduct } from '../../types/OrderProduct';
 export class ProductsCatalogComponent implements OnInit {
   products: ProductDetails[] | null = null;
 
-  constructor(private productsService: ProductsCountService) { }
+  constructor(private productsCountService: ProductsCountService) { }
 
   ngOnInit(): void {
     // Temporary db TODO: get data from api service
@@ -34,6 +34,6 @@ export class ProductsCatalogComponent implements OnInit {
 
   addProductToCart(product: ProductDetails) {
     let productData: OrderProduct = {...product, count: 0};
-    return this.productsService.addProductToCart(productData)
+    return this.productsCountService.addProductToCart(productData)
   }
 }

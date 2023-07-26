@@ -2,7 +2,10 @@
     <div class="container">
         <h2>My cart</h2>
         <!-- If there are no products in the cart -->
-        <p class="no-yet" *ngIf="!areProducts">No products yet</p>
+        <ng-container *ngIf="!areProducts">
+            <p class="no-yet" >No products yet</p>
+            <p class="link-paraghaph" routerLink="/catalog">Lets me show you our products!</p>
+        </ng-container>
 
         <ng-container *ngIf="areProducts">
             <section class="cart-products">
@@ -52,7 +55,7 @@
                 <span class="currency">lv</span>
             </p>
 
-            <form action="#" method="get">
+            <form>
                 <button type="submit">CONTINUE ORDER</button>
             </form>
         </ng-container>

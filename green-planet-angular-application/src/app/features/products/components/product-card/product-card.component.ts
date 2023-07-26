@@ -13,7 +13,7 @@ export class ProductCardComponent implements OnInit {
   @Input() product: ProductDetails | undefined = undefined;
 
   constructor(
-    private productsService: ProductsCountService,
+    private productsCountService: ProductsCountService,
     private viewContainerRef: ViewContainerRef
   ) { }
 
@@ -22,6 +22,6 @@ export class ProductCardComponent implements OnInit {
   }
   addProductToCart(product: ProductDetails) {
     let productData: OrderProduct = { ...product, count: 0 }
-    return this.productsService.addProductToCart(productData)
+    return this.productsCountService.addProductToCart(productData)
   }
 }
