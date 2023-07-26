@@ -73,12 +73,18 @@
     border-bottom: 1px solid #601700;
 }
 
-.hidden-paragraph p {
+.hidden-paragraph {
     display: none;
 }
 
 
-#product-details:hover .hidden-paragraph p,
-#product-delivery:hover .hidden-paragraph p {
+#product-details:hover .hidden-paragraph,
+#product-delivery:hover .hidden-paragraph {
     display: block;
+}
+
+.hideParagraph{
+    max-height: 0.5em;
+    overflow: hidden;
+    color: rgba(0, 0, 0, 0);
 }
