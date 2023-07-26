@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { db } from 'src/db.module';
 import { ProductDetails } from '../../types/ProductDetails';
+import { ProductsCountService } from '../../services/productsCount.service';
+import { OrderProduct } from '../../types/OrderProduct';
 
 @Component({
   selector: 'app-products-catalog',
@@ -9,22 +11,29 @@ import { ProductDetails } from '../../types/ProductDetails';
   styleUrls: ['./products-catalog.component.css']
 })
 
-export class ProductsCatalogComponent implements OnInit{
+export class ProductsCatalogComponent implements OnInit {
   products: ProductDetails[] | null = null;
 
-  constructor() {}
+  constructor(private productsService: ProductsCountService) { }
 
   ngOnInit(): void {
     // Temporary db TODO: get data from api service
-    this.products = db.products.slice(0,6);
+    this.products = db.products.slice(0, 6);
   }
-
+  
   handleFilter(form: NgForm) {
-    if(form.invalid) {
+    if (form.invalid) {
       return;
     }
-
+    
     //TODO: Handle products filter
-    console.log(form.value);    
+    // Temporary db TODO: get data from api service
+    // this.products = filtered data form api
+    console.log(form.value);
+  }
+
+  addProductToCart(product: ProductDetails) {
+    let productData: OrderProduct = {...product, count: 0};
+    return this.productsService.addProductToCart(productData)
   }
 }

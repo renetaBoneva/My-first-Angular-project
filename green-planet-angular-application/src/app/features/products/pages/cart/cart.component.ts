@@ -2,18 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { OrderProduct } from '../../types/OrderProduct';
 import { environment } from 'src/environments/environment.development';
 import { UserService } from 'src/app/features/user/services/user-service.service';
+import { ProductsCountService } from '../../services/productsCount.service';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit {
+export default class CartComponent implements OnInit {
   cartProducts: OrderProduct[] = [];
   areProducts: boolean = false;
   orderTotal: number = 0;
 
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    private productsCountService: ProductsCountService,
+  ) { }
 
   ngOnInit(): void {
     this.getCartProductsLocalStorage()
@@ -38,12 +42,32 @@ export class CartComponent implements OnInit {
       }
     }
 
+    this.checkAreProducts();
+    this.sumOrderTotal();
+  }
+
+  addProductToCart(product: OrderProduct) {
+    this.productsCountService.addProductToCart(product);
+    this.cartProducts.map(p => p._id === product._id ? p.count++ : p)
+    this.sumOrderTotal();
+  }
+
+  removeProductFromCart(product: OrderProduct) {
+    this.productsCountService.removeProductFromCart(product);
+    this.cartProducts = this.productsCountService.handleCartOnRemove(this.cartProducts, product);
+    this.checkAreProducts();
+    this.sumOrderTotal();
+  }
+
+  sumOrderTotal() {
+    this.cartProducts.map(p => this.orderTotal += p.price * p.count);
+  }
+
+  checkAreProducts() {
     this.cartProducts.length > 0
       ? this.areProducts = true
-      : this.areProducts;
-
-    if (this.areProducts) {
-      this.cartProducts.map(p => this.orderTotal += p.price * p.count);
-    }
+      : this.areProducts = false;
+    console.log(this.areProducts);
+    
   }
 }

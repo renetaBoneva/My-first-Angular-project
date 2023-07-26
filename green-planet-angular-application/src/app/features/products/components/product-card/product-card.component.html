@@ -1,19 +1,6 @@
-<ng-container>
-  <article class="product-card" *ngIf="product">
-    <div class="product-image" [routerLink]="['/catalog', product._id]">
-      <img src="assets/images/{{product.imgName}}" alt="{{product.title}}">
-    </div>
-    <div class="product-wrapper">
-      <h3 [routerLink]="['/catalog', product._id]">{{product.title}}</h3>
-      <div>
-        <p class="price">{{product.price}} <span>lv</span> </p>
-        <button (click)="addProductToCart()">ADD TO CART</button>
-      </div>
-    </div>
-  </article>
-</ng-container>
 
-<!-- <ng-template>
+<!-- WITHOUT ng-template -->
+<!-- <ng-container>
   <article class="product-card" *ngIf="product">
     <div class="product-image" [routerLink]="['/catalog', product._id]">
       <img src="assets/images/{{product.imgName}}" alt="{{product.title}}">
@@ -26,4 +13,20 @@
       </div>
     </div>
   </article>
-</ng-template> -->
+</ng-container> -->
+
+<!-- WITH ng-template-->
+<!-- <ng-template #productCardTemplate let-product="product">
+  <article class="product-card" *ngIf="product">
+    <div class="product-image" [routerLink]="['/catalog', product._id]">
+      <img src="assets/images/{{product.imgName}}" alt="{{product.title}}">
+    </div>
+    <div class="product-wrapper">
+      <h3 [routerLink]="['/catalog', product._id]">{{product.title}}</h3>
+      <div>
+        <p class="price">{{product.price}} <span>lv</span> </p>
+        <button (click)="addProductToCart(product)">ADD TO CART</button>
+      </div>
+    </div>
+  </article>
+</ng-template>  -->

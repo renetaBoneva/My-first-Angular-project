@@ -7,7 +7,7 @@ import { ProfileComponent } from './user/pages/profile/profile.component';
 import { RouterModule } from '@angular/router';
 import { UserRoutingModule } from './user/user-routing.module';
 import { ProductCardComponent } from './products/components/product-card/product-card.component';
-import { CartComponent } from './products/pages/cart/cart.component';
+import CartComponent from './products/pages/cart/cart.component';
 import { ProductsRoutingModule } from './products/products-routing.module';
 import { ProductDetailsComponent } from './products/pages/product-details/product-details.component';
 import { ProductsCatalogComponent } from './products/pages/products-catalog/products-catalog.component';
