@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { FeaturesModule } from './features/features.module';
 import { SharedModule } from './shared/shared.module';
+import { authInterceptorProvider } from './core/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { SharedModule } from './shared/shared.module';
     FeaturesModule, 
     SharedModule
   ],
-  providers: [],
+  providers: [authInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
