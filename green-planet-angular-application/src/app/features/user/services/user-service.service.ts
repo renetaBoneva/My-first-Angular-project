@@ -98,7 +98,6 @@ export class UserService {
       address
     }).subscribe({
       next: (user) => {
-        console.log(user);
         const { myCart, _id, accessToken } = { ...user }
         user = { myCart, _id, accessToken }
         const lsUser = this.updateUserCartOnLogin(user);
@@ -115,6 +114,30 @@ export class UserService {
         console.log(error)
       }
     })
+  }
+
+  getUserDetails() {
+    return this.http.get<UserDetails>(`/users/me`).pipe(
+      catchError((err) => {
+        // TODO HAndle error
+        console.log(err.message);
+        return [err]
+      }
+      )
+    )
+  }
+
+  editUser(email: string, firstName: string, lastName: string, address: string) {
+    // Practice server don't support user patch functionality
+    return this.http
+      .put('/users/me', { email, firstName, lastName, address })
+      .pipe(
+        catchError((err)=> {
+          // TODO HAndle error
+          console.log(err.message);
+          return [err]
+        })
+      )
   }
 
   updateUserCartOnLogin(userData: UserLocalStorage): UserLocalStorage {

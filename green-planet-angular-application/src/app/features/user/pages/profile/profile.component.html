@@ -2,113 +2,160 @@
     <div class="container">
         <section id="my-profile-section" *ngIf="!!userInfo">
             <h2>My profile</h2>
-            <article>
-                <p class="label">Email:</p>
-                <p class="info">{{userInfo.email}}</p>
+            <div class="profileInfoWrapper">
+                <!-- READ ONLY mode  -->
+                <ng-container *ngIf="!isEditMode">
+                    <article>
+                        <ng-container *ngIf="userInfo.email">
+                            <p class="label">Email:</p>
+                            <p class="info">{{userInfo.email}}</p>
+                        </ng-container>
 
-                <p class="label">First name:</p>
-                <p class="info">{{userInfo.firstName}}</p>
+                        <ng-container *ngIf="userInfo.firstName">
+                            <p class="label">First name:</p>
+                            <p class="info">{{userInfo.firstName}}</p>
+                        </ng-container>
 
-                <p class="label">Last name:</p>
-                <p class="info">{{userInfo.lastName}}</p>
+                        <ng-container *ngIf="userInfo.lastName">
+                            <p class="label">Last name:</p>
+                            <p class="info">{{userInfo.lastName}}</p>
+                        </ng-container>
 
-                <p class="label">Address:</p>
-                <p class="info">{{userInfo.address}}</p>
-            </article>
+                        <ng-container *ngIf="userInfo.address">
+                            <p class="label">Address:</p>
+                            <p class="info">{{userInfo.address}}</p>
+                        </ng-container>
+                    </article>
+                    <div class="edit-btn btn" (click)="changeMode()">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="1.3em"
+                            viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                            <path
+                                d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z" />
+                        </svg>
+                    </div>
+                    <div class="delete-btn btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="1.3em"
+                            viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                            <path
+                                d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
+                        </svg>
+                    </div>
+                </ng-container>
+
+                <!-- Edit mode -->
+                <ng-container *ngIf="isEditMode">
+                    <form id="edit-form" #editForm="ngForm" (ngSubmit)="editUser(editForm)">
+                        <!-- EMAIL -->
+                        <ng-container>
+                            <label for="email">Email<span class="a-must-sign">*</span>:</label>
+                            <input type="email" name="email" id="email" class="label" [(ngModel)]="userInfo.email" #inputEmail="ngModel"
+                                required email>                                
+                        </ng-container>
+                        <!-- email errors -->
+                        <ng-container *ngIf="inputEmail.touched">
+                            <p class="error-p" *ngIf="inputEmail.errors?.['required']">Email is required!</p>
+                            <p class="error-p" *ngIf="inputEmail.errors?.['email']">Invalid email!</p>
+                        </ng-container>
+
+                        <!-- FIRST NAME -->
+                        <ng-container>
+                            <label for="firstName">First name<span class="a-must-sign">*</span>:</label>
+                            <input type="text" [value]="userInfo.firstName" name="firstName" id="firstName"  [(ngModel)]="userInfo.firstName"  #inputFirstName="ngModel"
+                                minlength="2">
+                        </ng-container>
+                        <!-- first name errors -->
+                        <ng-container *ngIf="inputFirstName.touched">
+                            <p class="error-p" *ngIf="inputFirstName.errors?.['required']">First name is required!</p>
+                            <p class="error-p" *ngIf="inputFirstName.errors?.['minlength']">Invalid first name!</p>
+                        </ng-container>
+
+                        <!-- LAST NAME  -->
+                        <ng-container>
+                            <label for="lastName">Last name<span class="a-must-sign">*</span>:</label>
+                            <input type="text" [value]="userInfo.lastName" name="lastName" id="lastName"  [(ngModel)]="userInfo.lastName"  #inputLastName="ngModel"
+                                minlength="2">
+                        </ng-container>
+                        <!-- last name errors -->
+                        <ng-container *ngIf="inputLastName.touched">
+                            <p class="error-p" *ngIf="inputLastName.errors?.['required']">Last name is required!</p>
+                            <p class="error-p" *ngIf="inputLastName.errors?.['minlength']">Invalid last name!</p>
+                        </ng-container>
+
+                        <!-- ADDRESS -->
+                        <ng-container>
+                            <label for="address">Address<span class="a-must-sign">*</span>:</label>
+                            <input type="text" [value]="userInfo.address" name="address" id="address" [(ngModel)]="userInfo.address"  #inputAddress="ngModel" required
+                                minlength="4">
+                        </ng-container>
+                        <!-- address errors -->
+                        <ng-container *ngIf="inputAddress.touched">
+                            <p class="error-p" *ngIf="inputAddress.errors?.['required']">Address is required!</p>
+                            <p class="error-p" *ngIf="inputAddress.errors?.['minlength']">
+                                Address must be at least {{inputAddress.errors?.['minlength']['requiredLength']}}
+                                characters!
+                            </p>
+                        </ng-container>
+
+
+                        <ng-container>
+                            <p><span class="a-must-sign">*</span> this field is a must</p>
+                            <button type="submit" [disabled]="editForm.invalid">EDIT</button>
+                        </ng-container>
+                    </form>
+
+                </ng-container>
+
+            </div>
+
+
+
         </section>
         <section class="my-orders-section">
             <h2>My orders</h2>
-            
-            <!-- In case there are NO orders, we must display this paragraph -->
-            <!-- <p class="no-yet">There are no orders yet!</p> -->
-            
 
-            <div id="orders-wrapper">            
-                 <article class="order">
-                    <header class="order-header">
-                        <div>
-                            <p class="label">Order number:</p>
-                            <p class="info">1010337836</p>
+
+
+            <ng-container *ngIf="!!!userOrders">
+                <!-- In case there are NO orders, we must display this paragraph -->
+                <p class="no-yet">There are no orders yet!</p>
+            </ng-container>
+            <ng-container *ngIf="!!userOrders">
+                <div id="orders-wrapper">
+                    <article class="order" *ngFor="let order of userOrders">
+                        <header class="order-header">
+                            <div>
+                                <p class="label">Order number:</p>
+                                <p class="info">{{order.orderNumber}}</p>
+                            </div>
+                            <div>
+                                <p class="label">Date:</p>
+                                <p class="info">{{order.madeOnDate}}</p>
+                            </div>
+                        </header>
+
+                        <div class="order-body">
+
+                            <p class="label">Products:</p>
+                            <p class="label num">Count:</p>
+                            <p class="label num">Sum:</p>
+
+                            <ng-container *ngFor="let product of order.products">
+                                <p class="info">{{product.title}}</p>
+                                <p class="info num">{{product.count}}</p>
+                                <p class="info num">{{product.count * product.price }}</p>
+                            </ng-container>
                         </div>
-                        <div>
-                            <p class="label">Date:</p>
-                            <p class="info">30/06/23</p>
+
+                        <div class="order-footer">
+                            <p class="total">
+                                <span class="total-span">TOTAL:</span>
+                                {{order.total}}
+                                <span class="currency">lv</span>
+                            </p>
                         </div>
-                    </header>
-
-                    <div class="order-body">
-
-                        <p class="label">Products:</p>
-                        <p class="label num">Count:</p>
-                        <p class="label num">Sum:</p>
-
-                        <p class="info">Pink roses</p>
-                        <p class="info num">1</p>
-                        <p class="info num">9</p>
-
-
-                        <p class="info">White roses</p>
-                        <p class="info num">1</p>
-                        <p class="info num">8</p>
-
-
-                        <p class="info">Purple violets</p>
-                        <p class="info num">5</p>
-                        <p class="info num">15</p>
-
-                    </div>
-
-                    <div class="order-footer">
-                        <p class="total">
-                            <span class="total-span">TOTAL:</span>
-                            32
-                            <span class="currency">lv</span>
-                        </p>
-                    </div>
-                </article>
-                <article class="order">
-                    <header class="order-header">
-                        <div>
-                            <p class="label">Order number:</p>
-                            <p class="info">1010337836</p>
-                        </div>
-                        <div>
-                            <p class="label">Date:</p>
-                            <p class="info">30/06/23</p>
-                        </div>
-                    </header>
-
-                    <div class="order-body">
-
-                        <p class="label">Products:</p>
-                        <p class="label num">Count:</p>
-                        <p class="label num">Sum:</p>
-
-                        <p class="info">Pink roses</p>
-                        <p class="info num">1</p>
-                        <p class="info num">9</p>
-
-
-                        <p class="info">White roses</p>
-                        <p class="info num">1</p>
-                        <p class="info num">8</p>
-
-
-                        <p class="info">Purple violets</p>
-                        <p class="info num">5</p>
-                        <p class="info num">15</p>
-
-                    </div>
-
-                    <div class="order-footer">
-                        <p class="total">
-                            <span class="total-span">TOTAL:</span>
-                            32
-                            <span class="currency">lv</span>
-                        </p>
-                    </div>
-                </article> 
-            </div>
+                    </article>
+                </div>
+            </ng-container>
         </section>
     </div>
 </main>

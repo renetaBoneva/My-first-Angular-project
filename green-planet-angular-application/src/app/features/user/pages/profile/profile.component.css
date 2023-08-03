@@ -11,20 +11,20 @@ section {
     flex: 1 0 90%;
 }
 
-/* #my-profile-section table {
-    width: 100%;
-    display: flex;
-    align-content: space-between;
-    gap: 0.5em;
-} */
-
-#my-profile-section article {
+.profileInfoWrapper {
     padding: 1em 1.5em;
     margin-bottom: 1em;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     background-color: #E0D0C1;
 
+    display: flex;
+    align-items: flex-start;
+    gap: 2em;
+    justify-content: center;
+}
+
+#my-profile-section article {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .line {
@@ -39,6 +39,50 @@ section {
 
 .info {
     color: #601700;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+.btn:hover svg {
+    fill: #A76D60;
+}
+
+/* edit form */
+#edit-form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+#edit-form input {
+    padding: 0.5em 1em;
+    background-color: #F7F9F9;
+    border: none;
+}
+
+#edit-form label {
+    margin-top: 1em;
+    font-weight: 600;
+}
+
+#edit-form p {
+    text-align: right;
+    padding-top: 0.5em;
+}
+
+#edit-form button {
+    background-color: #00A676;
+    margin: 1.5em 0;
+}
+
+#edit-form button:hover {
+    background-color: #601700;
+}
+
+.error-p{
+    color: #D81159;
 }
 
 /* Orders section */

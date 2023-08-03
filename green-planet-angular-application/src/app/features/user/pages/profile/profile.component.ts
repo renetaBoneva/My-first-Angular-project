@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { UserDetails } from '../../types/UserDetails';
-import { db } from 'src/db.module';
-import { environment } from 'src/environments/environment.development';
+import { UserService } from '../../services/user-service.service';
+import { Order } from 'src/app/features/products/types/Order';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
@@ -10,17 +11,33 @@ import { environment } from 'src/environments/environment.development';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  userInfo: UserDetails | undefined = undefined;
+  userInfo: UserDetails | undefined;
+  userOrders: Order[] | undefined;
+  isEditMode: boolean = false;
+
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    const ls = localStorage.getItem(environment.USER_KEY_LOCAL_STORAGE);
-    // Temporary db TODO: get data from api service
-    const usersDB = db.users;
+    this.userService.getUserDetails().subscribe((userDetails) => {      
+      this.userInfo = userDetails;
+    });
 
-    if (ls) {
-      const parsedUser: UserDetails = JSON.parse(ls);
-      this.userInfo = usersDB.filter(user => user._id == parsedUser._id)[0];
+    // TODO: get user orders
+  }
+
+  editUser(form: NgForm) {
+    if (form.invalid) {
+      return;
     }
+
+    const { email, firstName, lastName, address } = form.value;
+    this.userService.editUser(email, firstName, lastName, address).subscribe((user) => {
+      this.changeMode();
+    })
+  }
+
+  changeMode(): void {
+    this.isEditMode = !this.isEditMode;
   }
 
 }
