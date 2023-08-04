@@ -10,3 +10,4 @@ export interface Order {
     "products": OrderProduct[]
     "total": number
 }
+

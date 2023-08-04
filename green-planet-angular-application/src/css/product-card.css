@@ -9,6 +9,7 @@
     width: 100%;
     aspect-ratio: 16/9;
     overflow: hidden;
+    background-color: #E0D0C1;
 }
 
 .product-wrapper {

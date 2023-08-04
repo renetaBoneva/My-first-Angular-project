@@ -81,6 +81,15 @@ section {
     background-color: #601700;
 }
 
+.buttons{
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+}
+.buttons button{
+    flex: 1 0 50%;
+}
+
 .error-p{
     color: #D81159;
 }

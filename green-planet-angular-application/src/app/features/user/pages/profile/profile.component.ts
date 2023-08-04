@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.userService.getUserDetails().subscribe((userDetails) => {      
+    this.userService.getUserDetails().subscribe((userDetails) => {
       this.userInfo = userDetails;
     });
 
@@ -29,15 +29,32 @@ export class ProfileComponent implements OnInit {
     if (form.invalid) {
       return;
     }
-
+    
     const { email, firstName, lastName, address } = form.value;
-    this.userService.editUser(email, firstName, lastName, address).subscribe((user) => {
+    this.userService.editUser(email, firstName, lastName, address).subscribe(() => {
       this.changeMode();
     })
+    console.log('edited');    
+  }
+  
+  deleteUser() {
+    const areYouSure = window.confirm('Are you sure you want to delete your profile?')
+    
+    if(areYouSure){
+      this.userService.deleteUser();
+    }    
+  }
+  
+  cancelEdit() {
+    // TODO: make it reactive form
+    this.userService.getUserDetails().subscribe((userDetails) => {
+      this.userInfo = userDetails;
+      this.changeMode();
+    });
+    console.log('canceled');    
   }
 
   changeMode(): void {
     this.isEditMode = !this.isEditMode;
   }
-
 }

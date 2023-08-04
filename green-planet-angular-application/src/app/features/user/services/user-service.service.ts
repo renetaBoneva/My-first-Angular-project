@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
 
 import { environment } from 'src/environments/environment.development';
-import { db } from 'src/db.module';
 import { UserLocalStorage } from '../types/UserLocalStorage';
 import { UserDetails } from '../types/UserDetails';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Subscription, catchError, tap } from 'rxjs';
+import { BehaviorSubject, Subscription, catchError, switchMap, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -45,15 +43,23 @@ export class UserService {
   }
 
   logout(): void {
-    this.http.get('/users/logout')
     const myCart = this.user?.myCart;
     localStorage.setItem(this.CART_KEY_LS, JSON.stringify(myCart))
 
-    // TODO: patch request to db for my cart
+    // Server don't support user edit!!!
+    this.http.get('/users/logout').pipe(
+      switchMap(() => this.http.put('/users/me', { ...this.user }))
+      ).subscribe({
+        error: (err) => {
+        // TODO HAndle error
+        console.log(err)
+      }
+    })
 
     this.user = undefined;
     localStorage.removeItem(this.USER_KEY_LS)
-
+    console.log('logged out');
+    
     this.router.navigate(['/'])
   }
 
@@ -63,6 +69,8 @@ export class UserService {
       .subscribe({
         next: (user) => {
           // this.user$$.next(user)
+          const { myCart, _id, accessToken } = { ...user }
+          user = { myCart, _id, accessToken }
           const lsUser = this.updateUserCartOnLogin(user);
 
           localStorage.setItem(
@@ -70,6 +78,7 @@ export class UserService {
             JSON.stringify(lsUser)
           );
           this.user = lsUser;
+          console.log('logged in');
           this.router.navigate(['/'])
         },
         error: (err) => {
@@ -87,7 +96,6 @@ export class UserService {
     password: string,
     rePass: string,
     address: string) {
-
 
     this.http.post<UserLocalStorage>('/users/register', {
       email,
@@ -128,16 +136,28 @@ export class UserService {
   }
 
   editUser(email: string, firstName: string, lastName: string, address: string) {
-    // Practice server don't support user patch functionality
+    // Practice server don't support user patch functionality!!!
     return this.http
       .put('/users/me', { email, firstName, lastName, address })
       .pipe(
-        catchError((err)=> {
+        catchError((err) => {
           // TODO HAndle error
           console.log(err.message);
           return [err]
         })
       )
+  }
+
+  deleteUser() {
+    // Server don't support user delete!!!
+    this.http.delete('/users/me').pipe(
+      switchMap(async () => this.logout())
+    ).subscribe({
+      error: (error) => {
+        // TODO Handle error
+        console.log(error)
+      }      
+    })
   }
 
   updateUserCartOnLogin(userData: UserLocalStorage): UserLocalStorage {
