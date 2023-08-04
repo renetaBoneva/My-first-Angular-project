@@ -60,7 +60,7 @@ export class AuthInterceptor implements HttpInterceptor {
             const lsUserData: UserLocalStorage = JSON.parse(lsData);
             return lsUserData.accessToken;
         }
-        
+
         const initData = localStorage.getItem(environment.INIT_ACCESS_TOKEN_LOCAL_STORAGE)
 
         if (initData) {
