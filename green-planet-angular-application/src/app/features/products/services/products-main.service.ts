@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 import { ProductDetails } from '../types/ProductDetails';
 import { Filters } from '../types/Filters';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, filter } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -25,32 +25,106 @@ export class ProductsMainService {
   }
 
   getProductsOnPage(offset: number, productsCount: number) {
-    return this.http.get<ProductDetails[]>(`/data/products?offset=${offset}&pageSize=${productsCount}`).subscribe({
-      next: (data) => this.pageProducts$$.next(data),
+    // Server pagination works if there are no products filters
+    // return this.http.get<ProductDetails[]>(`/data/products?offset=${offset}&pageSize=${productsCount}`).subscribe({
+    //   next: (data) => this.pageProducts$$.next(data),
+    //   error: (err) => console.log(err.message)
+    // })
+
+
+    // Custom pagination
+    return this.productsCollection$.subscribe({
+      next: (allProducts) => this.pageProducts$$.next(allProducts?.slice(offset, offset + productsCount)),
       error: (err) => console.log(err.message)
     })
   }
 
   getProductsCollection(filters?: Filters): void {
-    let query: string[] | string = [];
-    if (filters) {
-      console.log(filters);
+    //   // Can't understand how to make multiple requests to the practice server
+    // let query: string[] | string = [];
+    // let categories: string[] = []
 
-      filters.price.priceFrom ? query.push(`price>=${filters.price.priceFrom}`) : '';
-      filters.price.priceTo ? query.push(`price<=${filters.price.priceTo}`) : '';
-      query = query.join('AND');
-      query = encodeURIComponent(query);
-    }
+    // if (filters) {
+    //   filters.price.priceFrom ? query.push(`price>=${filters.price.priceFrom}`) : '';
+    //   filters.price.priceTo ? query.push(`price<=${filters.price.priceTo}`) : '';
 
-    console.log(`/data/products${filters ? `?where=${query}` : ''}`);
+    //   filters.category.flowers ? categories.push(`flowers`) : '';
+    //   filters.category.trees ? categories.push(`trees`) : '';
+    //   filters.category.outdoor ? categories.push(`outdoor`) : '';
+    //   filters.category.indoor ? categories.push(`indoor`) : '';
+
+    //   categories.length > 0 ? query.push(`category=${JSON.stringify(categories)}`) : '';
+    //   query = query.join('AND');
+
+    //   query = encodeURIComponent(query);
+    // }
+    // this.http.get<ProductDetails[]>(`/data/products${filters ? `?where=${query}` : ''}`)
 
     this.http.get<ProductDetails[]>(`/data/products`)
       .subscribe({
         next: (data) => {
+          // custom filter
+          if (filters) {
+            data = this.customFilter(filters, data)
+          }
           this.productsCollection$$.next(data)
         },
         error: (err) => console.log(err.message)
       })
+  }
+
+  customFilter(filters: Filters, data: ProductDetails[]) {
+    if (filters.price.priceFrom) {
+      data = data.filter(product => product.price >= Number(filters.price.priceFrom))
+    }
+    if (filters.price.priceTo) {
+      data = data.filter(product => product.price <= Number(filters.price.priceTo))
+    }
+    if (filters.category.flowers) {
+      data = data.filter(product => {
+        let isCategory = false;
+        product.category.map((item) => {
+          item == `flowers`
+            ? isCategory = true
+            : ""
+        })
+        return isCategory;
+      })
+    }
+    if (filters.category.trees) {
+      data = data.filter(product => {
+        let isCategory = false;
+        product.category.map((item) => {
+          item == `trees`
+            ? isCategory = true
+            : ""
+        })
+        return isCategory;
+      })
+    }
+    if (filters.category.outdoor) {
+      data = data.filter(product => {
+        let isCategory = false;
+        product.category.map((item) => {
+          item == `outdoor`
+            ? isCategory = true
+            : ""
+        })
+        return isCategory;
+      })
+    }
+    if (filters.category.indoor) {
+      data = data.filter(product => {
+        let isCategory = false;
+        product.category.map((item) => {
+          item == `indoor`
+            ? isCategory = true
+            : ""
+        })
+        return isCategory;
+      })
+    }
+    return data;
   }
 
 }

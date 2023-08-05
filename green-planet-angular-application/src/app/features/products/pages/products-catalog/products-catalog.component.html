@@ -41,19 +41,24 @@
 
             <!-- WITHOUT ng-template -->
             <div class="products-container">
-                <ng-container *ngFor="let product of products">
-                    <article class="product-card">
-                        <div class="product-image" [routerLink]="['/catalog', product._id]">
-                            <img src="assets/images/{{product.imgName}}" alt="{{product.title}}">
-                        </div>
-                        <div class="product-wrapper">
-                            <h3 [routerLink]="['/catalog', product._id]">{{product.title}}</h3>
-                            <div>
-                                <p class="price">{{product.price}} <span>lv</span> </p>
-                                <button (click)="addProductToCart(product)">ADD TO CART</button>
+                <ng-container *ngIf="(products && products.length <= 0) || products == undefined">
+                    <p class="no-yet">No products yet! Sorry!</p>
+                </ng-container>
+                <ng-container *ngIf="products && products.length > 0">
+                    <ng-container *ngFor="let product of products">
+                        <article class="product-card">
+                            <div class="product-image" [routerLink]="['/catalog', product._id]">
+                                <img src="assets/images/{{product.imgName}}" alt="{{product.title}}">
                             </div>
-                        </div>
-                    </article>
+                            <div class="product-wrapper">
+                                <h3 [routerLink]="['/catalog', product._id]">{{product.title}}</h3>
+                                <div>
+                                    <p class="price">{{product.price}} <span>lv</span> </p>
+                                    <button (click)="addProductToCart(product)">ADD TO CART</button>
+                                </div>
+                            </div>
+                        </article>
+                    </ng-container>
                 </ng-container>
             </div>
             <!-- <div class="products-container">

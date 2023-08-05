@@ -95,3 +95,4 @@ export class ProductsCatalogComponent implements OnInit, OnDestroy {
     this.subscription.map(s => s.unsubscribe())
   }
 }
+
