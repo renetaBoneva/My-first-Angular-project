@@ -35,6 +35,9 @@ export class ProductsCountService {
         let cartData: OrderProduct[] = JSON.parse(lsCart);
 
         cartData = this.handleCartOnAdd(cartData, product)
+        if (this.userService.user) {
+          this.userService.user.myCart = cartData;
+        }
 
         localStorage.setItem(
           environment.CART_KEY_LOCAL_STORAGE,
@@ -58,6 +61,9 @@ export class ProductsCountService {
         let userData: UserLocalStorage = JSON.parse(jsUser);
 
         userData.myCart = this.handleCartOnRemove(userData.myCart, product)
+        if (this.userService.user) {
+          this.userService.user.myCart = userData.myCart;
+        }
 
         localStorage.setItem(
           environment.USER_KEY_LOCAL_STORAGE,
