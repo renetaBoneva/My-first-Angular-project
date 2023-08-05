@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { db } from 'src/db.module';
+
 import { ProductDetails } from '../../types/ProductDetails';
-import { ProductsCountService } from '../../services/productsCount.service';
 import { OrderProduct } from '../../types/OrderProduct';
+import { ProductsCountService } from '../../services/productsCount.service';
 import { ProductsMainService } from '../../services/products-main.service';
 
 @Component({

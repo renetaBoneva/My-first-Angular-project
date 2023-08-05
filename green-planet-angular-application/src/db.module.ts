@@ -119,7 +119,7 @@ export let db = {
                 "flowers",
                 "outdoor"
             ],
-            "imgName": "composition-beautiful-flowers-background",
+            "imgName": "composition-beautiful-flowers-background.jpg",
             "isBestSeller": false,
             "details": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis error sequi a commodi officiis, debitis voluptates, rerum hic veritatis odit nobis nihil ipsam cumque quis fugiat soluta alias recusandae enim, vel amet quas asperiores culpa rem molestias. Libero aspernatur possimus praesentium, aliquam ratione, aperiam odio totam nobis illum numquam voluptates saepe quae eos iste deleniti expedita non laboriosam sint culpa. Dolorum ad dolorem neque dignissimos corrupti dolores veniam quas! Fugiat officia optio at autem odit minima porro, nihil a iusto exercitationem minus nam reiciendis? Fuga blanditiis, nostrum dolorum corrupti, deserunt saepe dicta quo pariatur labore explicabo rerum veniam! Corrupti, voluptates!"
         },

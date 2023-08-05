@@ -11,22 +11,13 @@ import { BehaviorSubject, Subscription, catchError, switchMap, tap } from 'rxjs'
   providedIn: 'root'
 })
 export class UserService {
-  // user$$ = new BehaviorSubject<UserDetails | UserLocalStorage | undefined>(undefined);
-
-  // user$ = this.user$$.asObservable();
-
   user: UserLocalStorage | undefined;
   CART_KEY_LS = environment.CART_KEY_LOCAL_STORAGE;
   USER_KEY_LS = environment.USER_KEY_LOCAL_STORAGE;
-  // subscription: Subscription;
 
   constructor(
     private http: HttpClient,
     private router: Router) {
-    // this.subscription = this.user$.subscribe({
-    //   next: (user) => { this.user = user; }
-    // })
-
     try {
       // Check if there is logged in user
       const lsUser = localStorage.getItem(this.USER_KEY_LS);
@@ -58,7 +49,6 @@ export class UserService {
 
     this.user = undefined;
     localStorage.removeItem(this.USER_KEY_LS)
-    console.log('logged out');
     
     this.router.navigate(['/'])
   }
@@ -78,7 +68,6 @@ export class UserService {
             JSON.stringify(lsUser)
           );
           this.user = lsUser;
-          console.log('logged in');
           this.router.navigate(['/'])
         },
         error: (err) => {
