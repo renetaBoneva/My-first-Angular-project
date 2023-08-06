@@ -2,7 +2,7 @@ import { OrderProduct } from "./OrderProduct";
 
 
 export interface Order {    
-    "_id": number,
+    "_id": string,
     "orderNumber": number,
     "ownerId": number,
     "madeOnDate": string,

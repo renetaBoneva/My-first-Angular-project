@@ -1,7 +1,7 @@
 export let db = {
     "products": [
         {
-            "_id": 67530,
+            "_id": "67530",
             "title": "Purple violets",
             "price": 3,
             "category": [
@@ -14,7 +14,7 @@ export let db = {
             "details": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis error sequi a commodi officiis, debitis voluptates, rerum hic veritatis odit nobis nihil ipsam cumque quis fugiat soluta alias recusandae enim, vel amet quas asperiores culpa rem molestias. Libero aspernatur possimus praesentium, aliquam ratione, aperiam odio totam nobis illum numquam voluptates saepe quae eos iste deleniti expedita non laboriosam sint culpa. Dolorum ad dolorem neque dignissimos corrupti dolores veniam quas! Fugiat officia optio at autem odit minima porro, nihil a iusto exercitationem minus nam reiciendis? Fuga blanditiis, nostrum dolorum corrupti, deserunt saepe dicta quo pariatur labore explicabo rerum veniam! Corrupti, voluptates!"
         },
         {
-            "_id": 67531,
+            "_id": "67531",
             "title": "Pink violets",
             "price": 3,
             "category": [
@@ -27,7 +27,7 @@ export let db = {
             "details": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis error sequi a commodi officiis, debitis voluptates, rerum hic veritatis odit nobis nihil ipsam cumque quis fugiat soluta alias recusandae enim, vel amet quas asperiores culpa rem molestias. Libero aspernatur possimus praesentium, aliquam ratione, aperiam odio totam nobis illum numquam voluptates saepe quae eos iste deleniti expedita non laboriosam sint culpa. Dolorum ad dolorem neque dignissimos corrupti dolores veniam quas! Fugiat officia optio at autem odit minima porro, nihil a iusto exercitationem minus nam reiciendis? Fuga blanditiis, nostrum dolorum corrupti, deserunt saepe dicta quo pariatur labore explicabo rerum veniam! Corrupti, voluptates!"
         },
         {
-            "_id": 67532,
+            "_id": "67532",
             "title": "White violets",
             "price": 3,
             "category": [
@@ -40,7 +40,7 @@ export let db = {
             "details": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis error sequi a commodi officiis, debitis voluptates, rerum hic veritatis odit nobis nihil ipsam cumque quis fugiat soluta alias recusandae enim, vel amet quas asperiores culpa rem molestias. Libero aspernatur possimus praesentium, aliquam ratione, aperiam odio totam nobis illum numquam voluptates saepe quae eos iste deleniti expedita non laboriosam sint culpa. Dolorum ad dolorem neque dignissimos corrupti dolores veniam quas! Fugiat officia optio at autem odit minima porro, nihil a iusto exercitationem minus nam reiciendis? Fuga blanditiis, nostrum dolorum corrupti, deserunt saepe dicta quo pariatur labore explicabo rerum veniam! Corrupti, voluptates!"
         },
         {
-            "_id": 67533,
+            "_id": "67533",
             "title": "White roses",
             "price": 8,
             "category": [
@@ -52,7 +52,7 @@ export let db = {
             "details": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis error sequi a commodi officiis, debitis voluptates, rerum hic veritatis odit nobis nihil ipsam cumque quis fugiat soluta alias recusandae enim, vel amet quas asperiores culpa rem molestias. Libero aspernatur possimus praesentium, aliquam ratione, aperiam odio totam nobis illum numquam voluptates saepe quae eos iste deleniti expedita non laboriosam sint culpa. Dolorum ad dolorem neque dignissimos corrupti dolores veniam quas! Fugiat officia optio at autem odit minima porro, nihil a iusto exercitationem minus nam reiciendis? Fuga blanditiis, nostrum dolorum corrupti, deserunt saepe dicta quo pariatur labore explicabo rerum veniam! Corrupti, voluptates!"
         },
         {
-            "_id": 67534,
+            "_id": "67534",
             "title": "Pink roses",
             "price": 9,
             "category": [
@@ -64,7 +64,7 @@ export let db = {
             "details": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis error sequi a commodi officiis, debitis voluptates, rerum hic veritatis odit nobis nihil ipsam cumque quis fugiat soluta alias recusandae enim, vel amet quas asperiores culpa rem molestias. Libero aspernatur possimus praesentium, aliquam ratione, aperiam odio totam nobis illum numquam voluptates saepe quae eos iste deleniti expedita non laboriosam sint culpa. Dolorum ad dolorem neque dignissimos corrupti dolores veniam quas! Fugiat officia optio at autem odit minima porro, nihil a iusto exercitationem minus nam reiciendis? Fuga blanditiis, nostrum dolorum corrupti, deserunt saepe dicta quo pariatur labore explicabo rerum veniam! Corrupti, voluptates!"
         },
         {
-            "_id": 67535,
+            "_id": "67535",
             "title": "Red roses",
             "price": 9,
             "category": [
@@ -76,7 +76,7 @@ export let db = {
             "details": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis error sequi a commodi officiis, debitis voluptates, rerum hic veritatis odit nobis nihil ipsam cumque quis fugiat soluta alias recusandae enim, vel amet quas asperiores culpa rem molestias. Libero aspernatur possimus praesentium, aliquam ratione, aperiam odio totam nobis illum numquam voluptates saepe quae eos iste deleniti expedita non laboriosam sint culpa. Dolorum ad dolorem neque dignissimos corrupti dolores veniam quas! Fugiat officia optio at autem odit minima porro, nihil a iusto exercitationem minus nam reiciendis? Fuga blanditiis, nostrum dolorum corrupti, deserunt saepe dicta quo pariatur labore explicabo rerum veniam! Corrupti, voluptates!"
         },
         {
-            "_id": 67536,
+            "_id": "67536",
             "title": "Cherry tree",
             "price": 18,
             "category": [
@@ -88,7 +88,7 @@ export let db = {
             "details": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis error sequi a commodi officiis, debitis voluptates, rerum hic veritatis odit nobis nihil ipsam cumque quis fugiat soluta alias recusandae enim, vel amet quas asperiores culpa rem molestias. Libero aspernatur possimus praesentium, aliquam ratione, aperiam odio totam nobis illum numquam voluptates saepe quae eos iste deleniti expedita non laboriosam sint culpa. Dolorum ad dolorem neque dignissimos corrupti dolores veniam quas! Fugiat officia optio at autem odit minima porro, nihil a iusto exercitationem minus nam reiciendis? Fuga blanditiis, nostrum dolorum corrupti, deserunt saepe dicta quo pariatur labore explicabo rerum veniam! Corrupti, voluptates!"
         },
         {
-            "_id": 67537,
+            "_id": "67537",
             "title": "Peach tree",
             "price": 15,
             "category": [
@@ -100,7 +100,7 @@ export let db = {
             "details": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis error sequi a commodi officiis, debitis voluptates, rerum hic veritatis odit nobis nihil ipsam cumque quis fugiat soluta alias recusandae enim, vel amet quas asperiores culpa rem molestias. Libero aspernatur possimus praesentium, aliquam ratione, aperiam odio totam nobis illum numquam voluptates saepe quae eos iste deleniti expedita non laboriosam sint culpa. Dolorum ad dolorem neque dignissimos corrupti dolores veniam quas! Fugiat officia optio at autem odit minima porro, nihil a iusto exercitationem minus nam reiciendis? Fuga blanditiis, nostrum dolorum corrupti, deserunt saepe dicta quo pariatur labore explicabo rerum veniam! Corrupti, voluptates!"
         },
         {
-            "_id": 67538,
+            "_id": "67538",
             "title": "Fig tree",
             "price": 12,
             "category": [
@@ -112,7 +112,7 @@ export let db = {
             "details": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis error sequi a commodi officiis, debitis voluptates, rerum hic veritatis odit nobis nihil ipsam cumque quis fugiat soluta alias recusandae enim, vel amet quas asperiores culpa rem molestias. Libero aspernatur possimus praesentium, aliquam ratione, aperiam odio totam nobis illum numquam voluptates saepe quae eos iste deleniti expedita non laboriosam sint culpa. Dolorum ad dolorem neque dignissimos corrupti dolores veniam quas! Fugiat officia optio at autem odit minima porro, nihil a iusto exercitationem minus nam reiciendis? Fuga blanditiis, nostrum dolorum corrupti, deserunt saepe dicta quo pariatur labore explicabo rerum veniam! Corrupti, voluptates!"
         },
         {
-            "_id": 67539,
+            "_id": "67539",
             "title": "Yellow roses",
             "price": 10,
             "category": [
@@ -124,7 +124,7 @@ export let db = {
             "details": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis error sequi a commodi officiis, debitis voluptates, rerum hic veritatis odit nobis nihil ipsam cumque quis fugiat soluta alias recusandae enim, vel amet quas asperiores culpa rem molestias. Libero aspernatur possimus praesentium, aliquam ratione, aperiam odio totam nobis illum numquam voluptates saepe quae eos iste deleniti expedita non laboriosam sint culpa. Dolorum ad dolorem neque dignissimos corrupti dolores veniam quas! Fugiat officia optio at autem odit minima porro, nihil a iusto exercitationem minus nam reiciendis? Fuga blanditiis, nostrum dolorum corrupti, deserunt saepe dicta quo pariatur labore explicabo rerum veniam! Corrupti, voluptates!"
         },
         {
-            "_id": 67540,
+            "_id": "67540",
             "title": "Olive tree",
             "price": 20,
             "category": [
@@ -136,7 +136,7 @@ export let db = {
             "details": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis error sequi a commodi officiis, debitis voluptates, rerum hic veritatis odit nobis nihil ipsam cumque quis fugiat soluta alias recusandae enim, vel amet quas asperiores culpa rem molestias. Libero aspernatur possimus praesentium, aliquam ratione, aperiam odio totam nobis illum numquam voluptates saepe quae eos iste deleniti expedita non laboriosam sint culpa. Dolorum ad dolorem neque dignissimos corrupti dolores veniam quas! Fugiat officia optio at autem odit minima porro, nihil a iusto exercitationem minus nam reiciendis? Fuga blanditiis, nostrum dolorum corrupti, deserunt saepe dicta quo pariatur labore explicabo rerum veniam! Corrupti, voluptates!"
         },
         {
-            "_id": 67541,
+            "_id": "67541",
             "title": "Plum tree",
             "price": 11,
             "category": [
@@ -148,7 +148,7 @@ export let db = {
             "details": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis error sequi a commodi officiis, debitis voluptates, rerum hic veritatis odit nobis nihil ipsam cumque quis fugiat soluta alias recusandae enim, vel amet quas asperiores culpa rem molestias. Libero aspernatur possimus praesentium, aliquam ratione, aperiam odio totam nobis illum numquam voluptates saepe quae eos iste deleniti expedita non laboriosam sint culpa. Dolorum ad dolorem neque dignissimos corrupti dolores veniam quas! Fugiat officia optio at autem odit minima porro, nihil a iusto exercitationem minus nam reiciendis? Fuga blanditiis, nostrum dolorum corrupti, deserunt saepe dicta quo pariatur labore explicabo rerum veniam! Corrupti, voluptates!"
         },
         {
-            "_id": 67542,
+            "_id": "67542",
             "title": "Pine tree",
             "price": 25,
             "category": [
@@ -160,7 +160,7 @@ export let db = {
             "details": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis error sequi a commodi officiis, debitis voluptates, rerum hic veritatis odit nobis nihil ipsam cumque quis fugiat soluta alias recusandae enim, vel amet quas asperiores culpa rem molestias. Libero aspernatur possimus praesentium, aliquam ratione, aperiam odio totam nobis illum numquam voluptates saepe quae eos iste deleniti expedita non laboriosam sint culpa. Dolorum ad dolorem neque dignissimos corrupti dolores veniam quas! Fugiat officia optio at autem odit minima porro, nihil a iusto exercitationem minus nam reiciendis? Fuga blanditiis, nostrum dolorum corrupti, deserunt saepe dicta quo pariatur labore explicabo rerum veniam! Corrupti, voluptates!"
         },
         {
-            "_id": 67543,
+            "_id": "67543",
             "title": "Evergreen boxwood",
             "price": 23,
             "category": [
@@ -172,7 +172,7 @@ export let db = {
             "details": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis error sequi a commodi officiis, debitis voluptates, rerum hic veritatis odit nobis nihil ipsam cumque quis fugiat soluta alias recusandae enim, vel amet quas asperiores culpa rem molestias. Libero aspernatur possimus praesentium, aliquam ratione, aperiam odio totam nobis illum numquam voluptates saepe quae eos iste deleniti expedita non laboriosam sint culpa. Dolorum ad dolorem neque dignissimos corrupti dolores veniam quas! Fugiat officia optio at autem odit minima porro, nihil a iusto exercitationem minus nam reiciendis? Fuga blanditiis, nostrum dolorum corrupti, deserunt saepe dicta quo pariatur labore explicabo rerum veniam! Corrupti, voluptates!"
         },
         {
-            "_id": 67544,
+            "_id": "67544",
             "title": "Lemon tree",
             "price": 19,
             "category": [
@@ -184,7 +184,7 @@ export let db = {
             "details": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis error sequi a commodi officiis, debitis voluptates, rerum hic veritatis odit nobis nihil ipsam cumque quis fugiat soluta alias recusandae enim, vel amet quas asperiores culpa rem molestias. Libero aspernatur possimus praesentium, aliquam ratione, aperiam odio totam nobis illum numquam voluptates saepe quae eos iste deleniti expedita non laboriosam sint culpa. Dolorum ad dolorem neque dignissimos corrupti dolores veniam quas! Fugiat officia optio at autem odit minima porro, nihil a iusto exercitationem minus nam reiciendis? Fuga blanditiis, nostrum dolorum corrupti, deserunt saepe dicta quo pariatur labore explicabo rerum veniam! Corrupti, voluptates!"
         },
         {
-            "_id": 67545,
+            "_id": "67545",
             "title": "Purple tulips",
             "price": 7,
             "category": [
@@ -196,7 +196,7 @@ export let db = {
             "details": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis error sequi a commodi officiis, debitis voluptates, rerum hic veritatis odit nobis nihil ipsam cumque quis fugiat soluta alias recusandae enim, vel amet quas asperiores culpa rem molestias. Libero aspernatur possimus praesentium, aliquam ratione, aperiam odio totam nobis illum numquam voluptates saepe quae eos iste deleniti expedita non laboriosam sint culpa. Dolorum ad dolorem neque dignissimos corrupti dolores veniam quas! Fugiat officia optio at autem odit minima porro, nihil a iusto exercitationem minus nam reiciendis? Fuga blanditiis, nostrum dolorum corrupti, deserunt saepe dicta quo pariatur labore explicabo rerum veniam! Corrupti, voluptates!"
         },
         {
-            "_id": 67546,
+            "_id": "67546",
             "title": "Pink tulips",
             "price": 7,
             "category": [
@@ -208,7 +208,7 @@ export let db = {
             "details": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis error sequi a commodi officiis, debitis voluptates, rerum hic veritatis odit nobis nihil ipsam cumque quis fugiat soluta alias recusandae enim, vel amet quas asperiores culpa rem molestias. Libero aspernatur possimus praesentium, aliquam ratione, aperiam odio totam nobis illum numquam voluptates saepe quae eos iste deleniti expedita non laboriosam sint culpa. Dolorum ad dolorem neque dignissimos corrupti dolores veniam quas! Fugiat officia optio at autem odit minima porro, nihil a iusto exercitationem minus nam reiciendis? Fuga blanditiis, nostrum dolorum corrupti, deserunt saepe dicta quo pariatur labore explicabo rerum veniam! Corrupti, voluptates!"
         },
         {
-            "_id": 67547,
+            "_id": "67547",
             "title": "Anthurium",
             "price": 17,
             "category": [
@@ -221,7 +221,7 @@ export let db = {
             "details": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis error sequi a commodi officiis, debitis voluptates, rerum hic veritatis odit nobis nihil ipsam cumque quis fugiat soluta alias recusandae enim, vel amet quas asperiores culpa rem molestias. Libero aspernatur possimus praesentium, aliquam ratione, aperiam odio totam nobis illum numquam voluptates saepe quae eos iste deleniti expedita non laboriosam sint culpa. Dolorum ad dolorem neque dignissimos corrupti dolores veniam quas! Fugiat officia optio at autem odit minima porro, nihil a iusto exercitationem minus nam reiciendis? Fuga blanditiis, nostrum dolorum corrupti, deserunt saepe dicta quo pariatur labore explicabo rerum veniam! Corrupti, voluptates!"
         },
         {
-            "_id": 67548,
+            "_id": "67548",
             "title": "Almond tree",
             "price": 12,
             "category": [
@@ -235,7 +235,7 @@ export let db = {
     ],
     "users": [
         {
-            "_id": 1,
+            "_id": "1",
             "email": "reneta.boneva@abv.bg",
             "password": "123456",
             "firstName": "Reneta",
@@ -244,12 +244,12 @@ export let db = {
             "myCart": [],
             "orders": [
                 {
-                    "_id": 10101
+                    "_id": "10101"
                 }
             ]
         },
         {
-            "_id": 2,
+            "_id": "2",
             "email": "zhak.semizov@abv.bg",
             "password": "123456",
             "firstName": "Zhak",
@@ -259,7 +259,7 @@ export let db = {
             "orders": []
         },
         {
-            "_id": 3,
+            "_id": "3",
             "email": "ira.bonewa.com@abv.bg",
             "password": "123456",
             "firstName": "Irina",
@@ -271,26 +271,26 @@ export let db = {
     ],
     "orders": [
         {
-            "_id": 10101,
+            "_id": "10101",
             "orderNumber": 10101,
             "ownerId": 1,
             "madeOnDate": "",
             "address":"Burgas, Bulgaria",
             "products": [
                 {
-                    "_id": 67546,
+                    "_id": "67546",
                     "title": "Pink tulips",
                     "price": 7,
                     "count": 1
                 },
                 {
-                    "_id": 67547,
+                    "_id": "67547",
                     "title": "Anthurium",
                     "price": 17,
                     "count": 1
                 },
                 {
-                    "_id": 67533,
+                    "_id": "67533",
                     "title": "White roses",
                     "price": 8,
                     "count": 1

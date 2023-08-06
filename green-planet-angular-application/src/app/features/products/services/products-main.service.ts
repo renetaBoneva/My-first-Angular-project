@@ -73,6 +73,10 @@ export class ProductsMainService {
       })
   }
 
+  getProductDetails(id: string){
+    return this.http.get<ProductDetails>(`/data/products/${id}`)
+  }
+
   customFilter(filters: Filters, data: ProductDetails[]) {
     if (filters.price.priceFrom) {
       data = data.filter(product => product.price >= Number(filters.price.priceFrom))

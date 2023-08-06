@@ -1,5 +1,5 @@
 export interface OrderProduct {
-    "_id": number,
+    "_id": string,
     "title": string,
     "price": number,
     "category": string[],

@@ -30,8 +30,6 @@ export class AppComponent implements OnInit {
         }
       },
       error: (err) => {
-        console.log(err.status);
-
         if (err.status == 404) {
           this.postProducts()
           return;
@@ -48,19 +46,16 @@ export class AppComponent implements OnInit {
       .subscribe({
         next: (user) => {
           localStorage.setItem(environment.INIT_ACCESS_TOKEN_LOCAL_STORAGE, JSON.stringify({ accessToken: user.accessToken }));
-          console.log('logged in');
 
           // map on products and post them
           db.products.map(product => {
-            console.log('try to post');
 
             this.http.post('/init/data/products', product).pipe(
               catchError(err => {
-                console.log("product post err", err.message)
+                console.log(err.message)
                 return [err]
               })
             ).subscribe({
-              next: (data) => console.log('product post ', data),
               error: (err) => console.log(err.message),
 
             })
@@ -68,7 +63,6 @@ export class AppComponent implements OnInit {
           // logout
           this.http.get('/init/users/logout').subscribe({
             next: (data) => {
-              console.log('logout')
               localStorage.removeItem(environment.INIT_ACCESS_TOKEN_LOCAL_STORAGE);
             },
             error: (err) => console.log('logout err', err.message),
