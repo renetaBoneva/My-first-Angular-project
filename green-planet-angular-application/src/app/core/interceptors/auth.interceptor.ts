@@ -24,7 +24,7 @@ export class AuthInterceptor implements HttpInterceptor {
                 req = req.clone({
                     headers: req.headers.set('X-Authorization', accessToken)
                 })
-            }
+            }            
 
             // put together full url
             req = req.clone({
@@ -42,7 +42,7 @@ export class AuthInterceptor implements HttpInterceptor {
             if ((req.url.startsWith('/users') && accessToken) || accessToken) {
                 req = req.clone({
                     headers: req.headers.set('X-Authorization', accessToken)
-                })
+                })                
             }
 
             // put together full url

@@ -11,6 +11,10 @@ import { BehaviorSubject, Subscription, catchError, switchMap, tap } from 'rxjs'
   providedIn: 'root'
 })
 export class UserService {
+  userDetails$$ = new BehaviorSubject<UserDetails | undefined>(undefined);
+
+  userDetails$ = this.userDetails$$.asObservable();
+
   user: UserLocalStorage | undefined;
   CART_KEY_LS = environment.CART_KEY_LOCAL_STORAGE;
   USER_KEY_LS = environment.USER_KEY_LOCAL_STORAGE;
@@ -40,8 +44,8 @@ export class UserService {
     // Server don't support user edit!!!
     this.http.get('/users/logout').pipe(
       switchMap(() => this.http.put('/users/me', { ...this.user }))
-      ).subscribe({
-        error: (err) => {
+    ).subscribe({
+      error: (err) => {
         // TODO HAndle error
         console.log(err)
       }
@@ -49,7 +53,7 @@ export class UserService {
 
     this.user = undefined;
     localStorage.removeItem(this.USER_KEY_LS)
-    
+
     this.router.navigate(['/'])
   }
 
@@ -83,16 +87,12 @@ export class UserService {
     firstName: string,
     lastName: string,
     password: string,
-    rePass: string,
     address: string) {
+
 
     this.http.post<UserLocalStorage>('/users/register', {
       email,
-      firstName,
-      lastName,
-      password,
-      rePass,
-      address
+      password
     }).subscribe({
       next: (user) => {
         const { myCart, _id, accessToken } = { ...user }
@@ -104,6 +104,22 @@ export class UserService {
           JSON.stringify(lsUser)
         );
         this.user = lsUser;
+
+        this.http.post<UserDetails>('/data/auth', {
+          email,
+          firstName,
+          lastName,
+          address,
+          myCart: lsUser.myCart,
+          myOrders: []
+        }).subscribe({
+          next: (data) => this.userDetails$$.next(data),
+          error: (error) => {
+            // TODO HAndle error
+            console.log(error)
+          }
+        })
+
         this.router.navigate(['/'])
       },
       error: (error) => {
@@ -114,27 +130,30 @@ export class UserService {
   }
 
   getUserDetails() {
-    return this.http.get<UserDetails>(`/users/me`).pipe(
-      catchError((err) => {
-        // TODO HAndle error
-        console.log(err.message);
-        return [err]
-      }
-      )
-    )
-  }
+    const query = encodeURIComponent(`_ownerId="${this.user?._id}"`)
 
-  editUser(email: string, firstName: string, lastName: string, address: string) {
-    // Practice server don't support user patch functionality!!!
-    return this.http
-      .put('/users/me', { email, firstName, lastName, address })
-      .pipe(
-        catchError((err) => {
+    return this.http.get<UserDetails[]>(`/data/auth?where=${query}`)
+      .subscribe({
+        next: (data) => {this.userDetails$$.next(data[0])},
+        error: (err) => {
           // TODO HAndle error
           console.log(err.message);
           return [err]
-        })
-      )
+        }
+      })
+  }
+
+  editUser(firstName: string, lastName: string, address: string, _id: string | undefined) {
+    return this.http
+      .patch<UserDetails>(`/data/auth/${_id}`, { firstName, lastName, address })
+      .subscribe({
+        next: (data) => this.userDetails$$.next(data),
+        error: (err) => {
+          // TODO HAndle error
+          console.log(err.message);
+          return [err]
+        }
+      })
   }
 
   deleteUser() {
@@ -145,7 +164,7 @@ export class UserService {
       error: (error) => {
         // TODO Handle error
         console.log(error)
-      }      
+      }
     })
   }
 

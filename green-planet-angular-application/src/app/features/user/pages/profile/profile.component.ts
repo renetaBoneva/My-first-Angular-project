@@ -14,44 +14,43 @@ export class ProfileComponent implements OnInit {
   userInfo: UserDetails | undefined;
   userOrders: Order[] | undefined;
   isEditMode: boolean = false;
-
+  
   constructor(private userService: UserService) { }
-
+  
   ngOnInit(): void {
-    this.userService.getUserDetails().subscribe((userDetails) => {
-      this.userInfo = userDetails;
-    });
-
-    // TODO: get user orders
+    this.userService.getUserDetails()
+    this.userService.userDetails$.subscribe({
+      next: userInfo => {
+        console.log(userInfo);
+        
+        this.userInfo = userInfo;
+        this.userOrders = userInfo?.myOrders;
+      }
+    })    
   }
 
   editUser(form: NgForm) {
     if (form.invalid) {
       return;
     }
-    
-    const { email, firstName, lastName, address } = form.value;
-    this.userService.editUser(email, firstName, lastName, address).subscribe(() => {
-      this.changeMode();
-    })
-    console.log('edited');    
+
+    const { firstName, lastName, address } = form.value;
+    this.userService.editUser(firstName, lastName, address,this.userInfo?._id)
+    this.changeMode();
   }
-  
+
   deleteUser() {
     const areYouSure = window.confirm('Are you sure you want to delete your profile?')
-    
-    if(areYouSure){
+
+    if (areYouSure) {
       this.userService.deleteUser();
-    }    
+    }
   }
-  
+
   cancelEdit() {
     // TODO: make it reactive form
-    this.userService.getUserDetails().subscribe((userDetails) => {
-      this.userInfo = userDetails;
-      this.changeMode();
-    });
-    console.log('canceled');    
+    this.userService.getUserDetails()
+    this.changeMode();
   }
 
   changeMode(): void {

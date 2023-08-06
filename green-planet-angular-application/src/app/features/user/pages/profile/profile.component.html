@@ -45,18 +45,6 @@
                 <!-- Edit mode -->
                 <ng-container *ngIf="isEditMode">
                     <form id="edit-form" #editForm="ngForm">
-                        <!-- EMAIL -->
-                        <ng-container>
-                            <label for="email">Email<span class="a-must-sign">*</span>:</label>
-                            <input type="email" name="email" id="email" class="label" [(ngModel)]="userInfo.email"
-                                #inputEmail="ngModel" required email>
-                        </ng-container>
-                        <!-- email errors -->
-                        <ng-container *ngIf="inputEmail.touched">
-                            <p class="error-p" *ngIf="inputEmail.errors?.['required']">Email is required!</p>
-                            <p class="error-p" *ngIf="inputEmail.errors?.['email']">Invalid email!</p>
-                        </ng-container>
-
                         <!-- FIRST NAME -->
                         <ng-container>
                             <label for="firstName">First name<span class="a-must-sign">*</span>:</label>
@@ -107,7 +95,6 @@
                     </form>
 
                 </ng-container>
-
             </div>
 
 
@@ -115,8 +102,6 @@
         </section>
         <section class="my-orders-section">
             <h2>My orders</h2>
-
-
 
             <ng-container *ngIf="!!!userOrders">
                 <!-- In case there are NO orders, we must display this paragraph -->

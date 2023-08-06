@@ -1,12 +1,13 @@
+import { Order } from "../../products/types/Order";
 import { OrderProduct } from "../../products/types/OrderProduct";
 
 export interface UserDetails {
-    "_id": number,
+    "_id": string,
+    "_ownerId": string,
     "email": string ,
-    "password": string ,
     "firstName": string ,
     "lastName": string ,
     "address": string,
-    "orders": Object[],
+    "myOrders": Order[],
     "myCart": OrderProduct[]
 }

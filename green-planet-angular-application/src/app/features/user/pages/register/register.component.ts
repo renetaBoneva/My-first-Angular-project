@@ -14,9 +14,8 @@ export class RegisterComponent {
     if(form.invalid) {
       return;
     }
-    
-    // todo: show server errors!   
-    const { email, firstName, lastName, password, rePass, address } = form.value;
-    this.userService.register(email, firstName, lastName, password, rePass, address);
+      
+    const { email, firstName, lastName, password, address } = form.value;
+    this.userService.register(email, firstName, lastName, password, address);
   }
 }

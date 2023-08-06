@@ -21,6 +21,8 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // This will work only if there are no remaining items from the previous loading in the local storage
+    
     // trying to get products
     this.http.get<ProductDetails[]>('/init/data/products').subscribe({
       next: (data) => {
