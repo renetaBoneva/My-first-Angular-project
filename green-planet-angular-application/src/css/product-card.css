@@ -9,7 +9,8 @@
     width: 100%;
     aspect-ratio: 16/9;
     overflow: hidden;
-    background-color: #E0D0C1;
+    background: rgb(0,166,118);
+    background: linear-gradient(233deg, rgba(0,166,118,1) 0%, rgba(224,208,193,1) 80%);
 }
 
 .product-wrapper {
