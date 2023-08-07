@@ -6,6 +6,7 @@ import { UserLocalStorage } from '../types/UserLocalStorage';
 import { UserDetails } from '../types/UserDetails';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Subscription, catchError, switchMap, tap } from 'rxjs';
+import { OrderProduct } from '../../products/types/OrderProduct';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class UserService {
   userDetails$ = this.userDetails$$.asObservable();
 
   user: UserLocalStorage | undefined;
+  userDetails: UserDetails | undefined;
   CART_KEY_LS = environment.CART_KEY_LOCAL_STORAGE;
   USER_KEY_LS = environment.USER_KEY_LOCAL_STORAGE;
 
@@ -41,17 +43,23 @@ export class UserService {
     const myCart = this.user?.myCart;
     localStorage.setItem(this.CART_KEY_LS, JSON.stringify(myCart))
 
-    // Server don't support user edit!!!
-    this.http.get('/users/logout').pipe(
-      switchMap(() => this.http.put('/users/me', { ...this.user }))
-    ).subscribe({
-      error: (err) => {
-        // TODO HAndle error
-        console.log(err)
-      }
-    })
+    if (this.userDetails) {
+      this.http.put(`/data/auth/${this.userDetails._id}`, { ...this.userDetails, myCart }).subscribe({
+        error: (err) => console.log(err)
+      })
+    }
+
+    this.http.get('/users/logout')
+      .subscribe({
+        error: (err) => {
+          // TODO HAndle error
+          console.log(err)
+        }
+      })
 
     this.user = undefined;
+    this.userDetails = undefined;
+    this.userDetails$$.next(undefined);
     localStorage.removeItem(this.USER_KEY_LS)
 
     this.router.navigate(['/'])
@@ -62,23 +70,37 @@ export class UserService {
       .post<UserLocalStorage>('/users/login', { email, password })
       .subscribe({
         next: (user) => {
-          // this.user$$.next(user)
           const { myCart, _id, accessToken } = { ...user }
           user = { myCart, _id, accessToken }
-          const lsUser = this.updateUserCartOnLogin(user);
 
-          localStorage.setItem(
-            this.USER_KEY_LS,
-            JSON.stringify(lsUser)
-          );
-          this.user = lsUser;
-          this.router.navigate(['/'])
+          this.user = user;
+          this.getUserDetails()
+          this.userDetails$.subscribe({
+            next: userDetails => {
+              if (userDetails) {
+                user.myCart = this.updateUserCartOnLogin(userDetails);
+
+                localStorage.setItem(
+                  this.USER_KEY_LS,
+                  JSON.stringify(user)
+                );
+
+                this.user = user;
+              }
+            },
+            error: (err) => {
+              // TODO HAndle error
+              console.log(err)
+            }
+          })
         },
         error: (err) => {
           // TODO HAndle error
           console.log(err)
         },
-
+        complete: () => {
+          this.router.navigate(['/'])
+        }
       })
   }
 
@@ -97,23 +119,26 @@ export class UserService {
       next: (user) => {
         const { myCart, _id, accessToken } = { ...user }
         user = { myCart, _id, accessToken }
-        const lsUser = this.updateUserCartOnLogin(user);
+        user.myCart = this.updateUserCartOnLogin();
 
         localStorage.setItem(
           this.USER_KEY_LS,
-          JSON.stringify(lsUser)
+          JSON.stringify(user)
         );
-        this.user = lsUser;
+        this.user = user;
 
         this.http.post<UserDetails>('/data/auth', {
           email,
           firstName,
           lastName,
           address,
-          myCart: lsUser.myCart,
+          myCart: user.myCart,
           myOrders: []
         }).subscribe({
-          next: (data) => this.userDetails$$.next(data),
+          next: (data) => {
+            this.userDetails = data;
+            this.userDetails$$.next(data)
+          },
           error: (error) => {
             // TODO HAndle error
             console.log(error)
@@ -134,7 +159,10 @@ export class UserService {
 
     return this.http.get<UserDetails[]>(`/data/auth?where=${query}`)
       .subscribe({
-        next: (data) => {this.userDetails$$.next(data[0])},
+        next: (data) => {
+          this.userDetails = data[0];
+          this.userDetails$$.next(data[0])
+        },
         error: (err) => {
           // TODO HAndle error
           console.log(err.message);
@@ -143,9 +171,9 @@ export class UserService {
       })
   }
 
-  editUser(firstName: string, lastName: string, address: string, _id: string | undefined) {
+  editUser(userInfo: UserDetails) {
     return this.http
-      .patch<UserDetails>(`/data/auth/${_id}`, { firstName, lastName, address })
+      .put<UserDetails>(`/data/auth/${userInfo._id}`, userInfo)
       .subscribe({
         next: (data) => this.userDetails$$.next(data),
         error: (err) => {
@@ -168,22 +196,42 @@ export class UserService {
     })
   }
 
-  updateUserCartOnLogin(userData: UserLocalStorage): UserLocalStorage {
+  updateUserCartOnLogin(userDetails?: UserDetails): OrderProduct[] {
     const lsCartData = localStorage.getItem(this.CART_KEY_LS);
-
-    if (userData.myCart) {
-      // TODO: get user cart products
-      console.log(userData.myCart);
-    } else {
-      userData.myCart = []
-    }
+    let newCart: OrderProduct[] = [];
 
     if (lsCartData) {
-      const lsCartArr = JSON.parse(lsCartData);
-      userData.myCart.push(...lsCartArr);
+      const lsCartArr = JSON.parse(lsCartData)
+      newCart = lsCartArr;
+
+      if (userDetails) {
+        // check if the product is already in the cart from
+        userDetails.myCart.forEach((currPr) => {
+          let isProductMissing = true;
+
+          // if it is in the cart -> count++
+          newCart.forEach((pr, index) => {
+            if (pr._id === currPr._id) {
+              newCart[index].count += currPr.count
+              isProductMissing = false;
+            }
+          })
+
+          // if it is not in the cart -> add it
+          if(isProductMissing){
+            newCart.push(currPr);
+          }
+        })
+        debugger;
+      }
+
       localStorage.removeItem(this.CART_KEY_LS)
+    } else {
+      if (userDetails) {
+        newCart = [...userDetails.myCart]
+      }
     }
-    return userData;
+    return newCart;
   }
 
 }
