@@ -26,15 +26,15 @@
                     </label>
                 </ng-container>
 
-
                 <ng-container class="filterSection priceSection">
                     <h3>Price</h3>
                     <label for="from">from</label>
-                    <input type="text" name="priceFrom" id="priceFrom" placeholder="0" ngModel #priceForm="ngModel">
+                    <input type="number" name="priceFrom" id="priceFrom" placeholder="0" ngModel #priceForm="ngModel"
+                        [appNegativeNumber]="priceForm.value">
                     <label for="to">to</label>
-                    <input type="text" name="priceTo" id="priceTo" placeholder="10" ngModel #priceTo="ngModel">
+                    <input type="number" name="priceTo" id="priceTo" placeholder="10" ngModel #priceTo="ngModel">
                 </ng-container>
-                <button type="submit">Filter</button>
+                <button type="submit" [disabled]="filterForm.invalid">Filter</button>
             </form>
         </aside>
         <section>
@@ -61,14 +61,14 @@
                     </ng-container>
                 </ng-container>
             </div>
+
+            <!-- WITH ng-template -->
             <!-- <div class="products-container">
                 <ng-container  *ngFor="let product of products">
                     <app-product-card [product]="product"></app-product-card>
                 </ng-container>
             </div> -->
 
-
-            <!-- WITH ng-template -->
 
             <!-- with @ViewChild -->
             <!-- <div class="products-container">

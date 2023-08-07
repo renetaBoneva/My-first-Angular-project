@@ -113,7 +113,7 @@ aside form#filterForm h3 {
     flex-direction: column;
 }
 
-aside form#filterForm input[type=text] {
+aside form#filterForm input[type=number] {
     font-size: 20px;
     width: 100%;
     background-color: #E0D0C1;

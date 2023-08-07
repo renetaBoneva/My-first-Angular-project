@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LoadingComponent } from './components/loading/loading.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { PassValidatorDirective } from './directives/validators/pass-validator.directive';
+import { NegativeNumberDirective } from './directives/validators/positive-number.directive';
 
 
 
@@ -10,7 +11,8 @@ import { PassValidatorDirective } from './directives/validators/pass-validator.d
   declarations: [
     LoadingComponent,
     ErrorPageComponent,
-    PassValidatorDirective
+    PassValidatorDirective,
+    NegativeNumberDirective
   ],
   imports: [
     CommonModule
@@ -18,7 +20,8 @@ import { PassValidatorDirective } from './directives/validators/pass-validator.d
   exports: [
     LoadingComponent,
     ErrorPageComponent,
-    PassValidatorDirective
+    PassValidatorDirective,
+    NegativeNumberDirective
   ]
 })
 export class SharedModule { }

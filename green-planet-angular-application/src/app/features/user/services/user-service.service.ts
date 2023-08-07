@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment.development';
 import { UserLocalStorage } from '../types/UserLocalStorage';
 import { UserDetails } from '../types/UserDetails';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Subscription, catchError, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, switchMap} from 'rxjs';
 import { OrderProduct } from '../../products/types/OrderProduct';
 
 @Injectable({
