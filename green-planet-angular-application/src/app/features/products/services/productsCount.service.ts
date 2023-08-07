@@ -19,7 +19,12 @@ export class ProductsCountService {
       if (jsUser) {
         let userData: UserLocalStorage = JSON.parse(jsUser);
 
-        this.handleCartOnAdd(userData.myCart, product)
+        const cartData = this.handleCartOnAdd(userData.myCart, product)   
+        userData.myCart = cartData;
+             
+        if (this.userService.user) {
+          this.userService.user.myCart = cartData;
+        }
 
         localStorage.setItem(
           environment.USER_KEY_LOCAL_STORAGE,
@@ -35,9 +40,7 @@ export class ProductsCountService {
         let cartData: OrderProduct[] = JSON.parse(lsCart);
 
         cartData = this.handleCartOnAdd(cartData, product)
-        if (this.userService.user) {
-          this.userService.user.myCart = cartData;
-        }
+        
 
         localStorage.setItem(
           environment.CART_KEY_LOCAL_STORAGE,
