@@ -44,42 +44,56 @@
 
                 <!-- Edit mode -->
                 <ng-container *ngIf="isEditMode">
-                    <form id="edit-form" #editForm="ngForm">
+
+                    <form id="edit-form" [formGroup]="form" (ngSubmit)="editUserReact()">
                         <!-- FIRST NAME -->
                         <ng-container>
                             <label for="firstName">First name<span class="a-must-sign">*</span>:</label>
-                            <input type="text" [value]="userInfo.firstName" name="firstName" id="firstName"
-                                [(ngModel)]="userInfo.firstName" #inputFirstName="ngModel" minlength="2">
+                            <input type="text" name="firstName" id="firstName" formControlName="firstName"
+                                [value]="this.userInfo.firstName" minlength="2">
                         </ng-container>
                         <!-- first name errors -->
-                        <ng-container *ngIf="inputFirstName.touched">
-                            <p class="error-p" *ngIf="inputFirstName.errors?.['required']">First name is required!</p>
-                            <p class="error-p" *ngIf="inputFirstName.errors?.['minlength']">Invalid first name!</p>
+                        <ng-container *ngIf="form.get('firstName')?.touched">
+                            <p class="error-p" *ngIf="form.get('firstName')?.errors?.['required']">First name is
+                                required!</p>
+                            <p class="error-p" *ngIf="form.get('firstName')?.errors?.['minlength']">
+                                Invalid first name! First name must be at least
+                                {{form.get('firstName')?.errors?.['minlength']['requiredLength']}} characters long!
+                            </p>
                         </ng-container>
 
                         <!-- LAST NAME  -->
                         <ng-container>
                             <label for="lastName">Last name<span class="a-must-sign">*</span>:</label>
-                            <input type="text" [value]="userInfo.lastName" name="lastName" id="lastName"
-                                [(ngModel)]="userInfo.lastName" #inputLastName="ngModel" minlength="2">
+                            <input type="text" name="lastName" id="lastName" formControlName="lastName"
+                                [value]="this.userInfo.lastName" minlength="2">
                         </ng-container>
                         <!-- last name errors -->
-                        <ng-container *ngIf="inputLastName.touched">
-                            <p class="error-p" *ngIf="inputLastName.errors?.['required']">Last name is required!</p>
-                            <p class="error-p" *ngIf="inputLastName.errors?.['minlength']">Invalid last name!</p>
+                        <ng-container *ngIf="form.get('lastName')?.touched">
+                            <p class="error-p" *ngIf="form.get('lastName')?.errors?.['required']">Last name is required!
+                            </p>
+                            <p class="error-p" *ngIf="form.get('lastName')?.errors?.['minlength']">
+                                Invalid first name! First name must be at least {{form.get('lastName')?.errors?.['minlength']['requiredLength']}} characters long!
+                            </p>
                         </ng-container>
 
                         <!-- ADDRESS -->
                         <ng-container>
                             <label for="address">Address<span class="a-must-sign">*</span>:</label>
-                            <input type="text" [value]="userInfo.address" name="address" id="address"
-                                [(ngModel)]="userInfo.address" #inputAddress="ngModel" required minlength="4">
+                            <input
+                                type="text"
+                                name="address"
+                                id="address"
+                                formControlName="address"
+                                [value]="this.userInfo.address"
+                                required
+                                minlength="4">
                         </ng-container>
                         <!-- address errors -->
-                        <ng-container *ngIf="inputAddress.touched">
-                            <p class="error-p" *ngIf="inputAddress.errors?.['required']">Address is required!</p>
-                            <p class="error-p" *ngIf="inputAddress.errors?.['minlength']">
-                                Address must be at least {{inputAddress.errors?.['minlength']['requiredLength']}}
+                        <ng-container *ngIf="form.get('address')?.touched">
+                            <p class="error-p" *ngIf="form.get('address')?.errors?.['required']">Address is required!</p>
+                            <p class="error-p" *ngIf="form.get('address')?.errors?.['minlength']">
+                                Address must be at least {{form.get('address')?.errors?.['minlength']['requiredLength']}}
                                 characters!
                             </p>
                         </ng-container>
@@ -88,7 +102,7 @@
                         <ng-container>
                             <p><span class="a-must-sign">*</span> this field is a must</p>
                             <div class="buttons">
-                                <button [disabled]="editForm.invalid" (click)="editUser(editForm)">EDIT</button>
+                                <button [disabled]="form.invalid">EDIT</button>
                                 <button (click)="cancelEdit()">CANCEL</button>
                             </div>
                         </ng-container>
@@ -103,11 +117,11 @@
         <section class="my-orders-section">
             <h2>My orders</h2>
 
-            <ng-container *ngIf="!!!userOrders">
+            <ng-container *ngIf="userOrders && userOrders.length <= 0">
                 <!-- In case there are NO orders, we must display this paragraph -->
                 <p class="no-yet">There are no orders yet!</p>
             </ng-container>
-            <ng-container *ngIf="!!userOrders">
+            <ng-container *ngIf="userOrders && userOrders.length > 0">
                 <div id="orders-wrapper">
                     <article class="order" *ngFor="let order of userOrders">
                         <header class="order-header">
