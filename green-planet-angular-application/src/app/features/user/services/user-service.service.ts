@@ -7,6 +7,8 @@ import { UserDetails } from '../types/UserDetails';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, switchMap } from 'rxjs';
 import { OrderProduct } from '../../products/types/OrderProduct';
+import { Order } from '../../products/types/Order';
+import { ProductsCountService } from '../../products/services/productsCount.service';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +25,7 @@ export class UserService {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
   ) {
     try {
       // Check if there is logged in user
@@ -184,14 +186,31 @@ export class UserService {
       })
   }
 
-  editUser(userInfo: UserDetails) {
+  editUser(userInfo: UserDetails, order?: Order) {
+
+    if (order) {
+      userInfo.myOrders.push(order)
+      userInfo.myCart = []
+
+      if (this.user) {
+        this.user.myCart = [];
+        localStorage.setItem(
+          environment.USER_KEY_LOCAL_STORAGE,
+          JSON.stringify(this.user)
+        )
+      }
+    } else {
+      this.user ? userInfo.myCart = this.user.myCart : '';
+    }
 
     return this.http
       .put<UserDetails>(`/data/auth/${userInfo._id}`, userInfo)
       .subscribe({
         next: (data) => {
-
           this.userDetails$$.next(data)
+          if (order) {
+            this.router.navigate(['/order-confirmed'])
+          }
         },
         error: (err) => {
           // TODO HAndle error
@@ -214,6 +233,45 @@ export class UserService {
         console.log(error)
       }
     })
+  }
+
+  makeOrder(
+    madeOnDate: Date,
+    address: string,
+    products: OrderProduct[],
+    total: number,
+  ) {
+    let orderNumber = String(
+      total *
+      madeOnDate.getHours() *
+      madeOnDate.getSeconds() *
+      madeOnDate.getMinutes() *
+      madeOnDate.getFullYear())
+
+    orderNumber = address.charCodeAt(0) + orderNumber.slice(orderNumber.length - 7, orderNumber.length - 1)
+
+    if (this.isLogged) {
+      // if the user is logged
+      this.http.post<Order>('/data/orders', {
+        orderNumber,
+        madeOnDate: String(madeOnDate),
+        address,
+        products,
+        total
+      }).subscribe({
+        next: (order) => {
+          if (this.userDetails) {
+            this.editUser(this.userDetails, order)
+          }
+        }
+      })
+    } else{
+      // if the user is not logged
+      console.log("TODO: make order for unlogged users");
+      // login like admin
+      // remove products from ls
+      // navigate to order confirmed      
+    }
   }
 
   updateUserCartOnLogin(userDetails?: UserDetails): OrderProduct[] {
@@ -242,7 +300,6 @@ export class UserService {
             newCart.push(currPr);
           }
         })
-        debugger;
       }
 
       localStorage.removeItem(this.CART_KEY_LS)

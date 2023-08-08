@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
+import { environment } from 'src/environments/environment.development';
 import { OrderProduct } from 'src/app/features/products/types/OrderProduct';
 import { UserService } from 'src/app/features/user/services/user-service.service';
-import { environment } from 'src/environments/environment.development';
 
 @Component({
   selector: 'app-continue-order',
@@ -12,7 +13,7 @@ import { environment } from 'src/environments/environment.development';
 })
 export class ContinueOrderComponent implements OnInit {
   cartProducts: OrderProduct[] | undefined;
-  orderTotal:number = 0;
+  orderTotal: number = 0;
 
   form = this.fb.group({
     email: ["", [Validators.required, Validators.email]],
@@ -65,7 +66,7 @@ export class ContinueOrderComponent implements OnInit {
     return this.userService.userDetails;
   }
 
-  
+
   sumOrderTotal() {
     this.orderTotal = 0;
     this.cartProducts?.map(p => this.orderTotal += p.price * p.count);
@@ -75,6 +76,10 @@ export class ContinueOrderComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-    console.log(this.form.value);
+
+    const madeOnDate = new Date();
+    if (this.form.value.address && this.cartProducts) {
+      this.userService.makeOrder(madeOnDate, this.form.value.address, this.cartProducts, this.orderTotal);
+    }
   }
 }
