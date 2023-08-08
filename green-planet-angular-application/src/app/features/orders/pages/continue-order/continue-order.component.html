@@ -1,0 +1,120 @@
+<main>
+    <div class="container">
+
+        <div class="backBtn">
+            <p routerLink="/my-cart">
+                <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                    viewBox="0 0 320 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                    <path
+                        d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
+                </svg>
+                Back to cart
+            </p>
+        </div>
+        <section id="order-details">
+            <article id="products-article">
+                <div class="cart-products">
+                    <div class="product-card" *ngFor="let product of cartProducts">
+                        <div class="product-image">
+                            <img src="assets/images/{{product.imgName}}" alt="{{product.title}}">
+                        </div>
+                        <div class="product-wrapper">
+                            <div>
+                                <h3>{{product.title}}</h3>
+                                <ul>
+                                    <li class="productCount">{{product.count}}</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p class="price">
+                                    {{product.price}}
+                                    <span class="currency">lv</span>
+                                </p>
+                                <p class="price">
+                                    <span>TOTAL:</span>
+                                    {{product.price*product.count}}
+                                    <span class="currency">lv</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p id="total">
+                    <span id="total-span">TOTAL:</span>
+                    {{orderTotal}}
+                    <span class="currency">lv</span>
+                </p>
+            </article>
+            <article id="my-order-details">
+                <h2>Order Details</h2>
+
+                <form id="order-form" [formGroup]="form" (ngSubmit)="finishOrder()">
+                    <!-- EMAIL -->
+                    <label for="email">Email<span class="a-must-sign">*</span>:</label>
+                    <input type="email" name="email" id="email" formControlName="email">
+                    <!-- email errors -->
+                    <ng-container *ngIf="form.get('email')?.touched">
+                        <p class="error-p" *ngIf="form.get('email')?.errors?.['required']">Email is required!</p>
+                        <p class="error-p" *ngIf="form.get('email')?.errors?.['email']">Invalid email!</p>
+                    </ng-container>
+
+                    <!-- FIRST NAME -->
+                    <ng-container>
+                        <label for="firstName">First name<span class="a-must-sign">*</span>:</label>
+                        <input type="text" name="firstName" id="firstName" formControlName="firstName">
+                    </ng-container>
+                    <!-- first name errors -->
+                    <ng-container *ngIf="form.get('firstName')?.touched">
+                        <p class="error-p" *ngIf="form.get('firstName')?.errors?.['required']">First name is
+                            required!</p>
+                        <p class="error-p" *ngIf="form.get('firstName')?.errors?.['minlength']">
+                            Invalid first name! First name must be at least
+                            {{form.get('firstName')?.errors?.['minlength']['requiredLength']}} characters long!
+                        </p>
+                    </ng-container>
+
+                    <!-- LAST NAME  -->
+                    <ng-container>
+                        <label for="lastName">Last name<span class="a-must-sign">*</span>:</label>
+                        <input type="text" name="lastName" id="lastName" formControlName="lastName">
+                    </ng-container>
+                    <!-- last name errors -->
+                    <ng-container *ngIf="form.get('lastName')?.touched">
+                        <p class="error-p" *ngIf="form.get('lastName')?.errors?.['required']">Last name is required!
+                        </p>
+                        <p class="error-p" *ngIf="form.get('lastName')?.errors?.['minlength']">
+                            Invalid first name! First name must be at least
+                            {{form.get('lastName')?.errors?.['minlength']['requiredLength']}} characters long!
+                        </p>
+                    </ng-container>
+
+                    <!-- ADDRESS -->
+                    <ng-container>
+                        <label for="address">Address<span class="a-must-sign">*</span>:</label>
+                        <input type="text" name="address" id="address" formControlName="address">
+                    </ng-container>
+                    <!-- address errors -->
+                    <ng-container *ngIf="form.get('address')?.touched">
+                        <p class="error-p" *ngIf="form.get('address')?.errors?.['required']">Address is required!</p>
+                        <p class="error-p" *ngIf="form.get('address')?.errors?.['minlength']">
+                            Address must be at least {{form.get('address')?.errors?.['minlength']['requiredLength']}}
+                            characters!
+                        </p>
+                    </ng-container>
+
+
+                    <ng-container>
+                        <p><span class="a-must-sign">*</span> this field is a must</p>
+                        <div class="buttons">
+                            <button [disabled]="form.invalid">FINISH ORDER</button>
+                        </div>
+                    </ng-container>
+                </form>
+
+            </article>
+
+        </section>
+
+    </div>
+</main>

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 import { ProductDetails } from '../types/ProductDetails';
 import { Filters } from '../types/Filters';
-import { BehaviorSubject, filter } from 'rxjs';
+import { BehaviorSubject, catchError, filter, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,6 @@ export class ProductsMainService {
     private http: HttpClient
   ) { }
 
-
   getBestSellers() {
     return this.http.get<ProductDetails[]>('/data/products?where=isBestSeller%3Dtrue')
   }
@@ -31,11 +30,14 @@ export class ProductsMainService {
     //   error: (err) => console.log(err.message)
     // })
 
-
     // Custom pagination
     return this.productsCollection$.subscribe({
-      next: (allProducts) => this.pageProducts$$.next(allProducts?.slice(offset, offset + productsCount)),
-      error: (err) => console.log(err.message)
+      next: (allProducts) => {
+        this.pageProducts$$.next(allProducts?.slice(offset, offset + productsCount))
+      },
+      error: (err) => {
+        console.log(err.message)
+      }
     })
   }
 
@@ -69,11 +71,14 @@ export class ProductsMainService {
           }
           this.productsCollection$$.next(data)
         },
-        error: (err) => console.log(err.message)
+        error: (err) => {
+          console.log(err.message)
+        }
       })
   }
 
-  getProductDetails(id: string){
+  getProductDetails(id: string) {
+
     return this.http.get<ProductDetails>(`/data/products/${id}`)
   }
 

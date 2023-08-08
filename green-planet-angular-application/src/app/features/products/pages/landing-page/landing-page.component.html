@@ -5,7 +5,7 @@
                 alt="happy-father-giving-his-small-daughter-potted-flower-while-she-s-helping-him-garden-center">
             <a routerLink="/catalog">Let me show you our products!</a>
         </div>
-        <section>
+        <section *ngIf="bestSellersArr.length > 0">
             <h2>Best sellers</h2>
             <div class="best-sellers-container">
                 <ng-container *ngFor="let product of bestSellersArr">

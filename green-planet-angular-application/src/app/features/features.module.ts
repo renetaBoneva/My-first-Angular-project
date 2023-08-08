@@ -11,9 +11,12 @@ import CartComponent from './products/pages/cart/cart.component';
 import { ProductsRoutingModule } from './products/products-routing.module';
 import { ProductDetailsComponent } from './products/pages/product-details/product-details.component';
 import { ProductsCatalogComponent } from './products/pages/products-catalog/products-catalog.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { LogoutComponent } from './user/pages/logout/logout.component';
+import { OrderRoutingModule } from './orders/orders-routing.module';
+import { OrderConfirmedComponent } from './orders/pages/order-confirmed/order-confirmed.component';
+import { ContinueOrderComponent } from './orders/pages/continue-order/continue-order.component';
 
  
 
@@ -30,12 +33,16 @@ import { LogoutComponent } from './user/pages/logout/logout.component';
     ProfileComponent,
     CartComponent,
     LogoutComponent,
+    OrderConfirmedComponent,
+    ContinueOrderComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
     SharedModule,
     FormsModule,
+    ReactiveFormsModule,
+    OrderRoutingModule,
     UserRoutingModule,
     ProductsRoutingModule
   ],
@@ -51,6 +58,8 @@ import { LogoutComponent } from './user/pages/logout/logout.component';
     ProfileComponent,
     CartComponent,
     LogoutComponent,
+    OrderConfirmedComponent,
+    ContinueOrderComponent,
   ]
 })
 export class FeaturesModule { }
