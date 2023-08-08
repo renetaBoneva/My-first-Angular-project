@@ -1,13 +1,17 @@
 import { HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable, catchError } from "rxjs";
+import { Observable, catchError, tap } from "rxjs";
 import { environment } from "src/environments/environment.development";
 import { UserLocalStorage } from "../../features/user/types/UserLocalStorage";
+import { LoadingService } from "src/app/shared/services/loading.service";
 
 const { apiUrl } = environment;
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
+    constructor(private loadingService: LoadingService) { }
+
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        this.loadingService.startLoading()
         const accessToken = this.getToken();
 
         if (!req.url.startsWith('/init')) {
@@ -24,7 +28,7 @@ export class AuthInterceptor implements HttpInterceptor {
                 req = req.clone({
                     headers: req.headers.set('X-Authorization', accessToken)
                 })
-            }            
+            }
 
             // put together full url
             req = req.clone({
@@ -32,24 +36,31 @@ export class AuthInterceptor implements HttpInterceptor {
             })
 
             return next.handle(req).pipe(
+                tap(() => {
+                    this.loadingService.stopLoading()
+                }),
                 catchError((err) => {
                     console.log(err.message);
+                    this.loadingService.stopLoading()
                     return [err];
                 })
             )
-        } else {            
+        } else {
             // add token in headers
             if ((req.url.startsWith('/users') && accessToken) || accessToken) {
                 req = req.clone({
                     headers: req.headers.set('X-Authorization', accessToken)
-                })                
+                })
             }
 
             // put together full url
             req = req.clone({
                 url: `${apiUrl}${req.url.replace('/init', '')}`
             })
-            return next.handle(req);
+            return next.handle(req).pipe(
+                tap(() => {
+                    this.loadingService.stopLoading()
+                }));
         }
     }
 

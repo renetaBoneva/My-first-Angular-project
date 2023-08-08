@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ProductDetails } from './features/products/types/ProductDetails';
-import { ObservableInput, catchError, of, switchMap, tap } from 'rxjs';
-import { UserService } from './features/user/services/user-service.service';
-import { db } from 'src/db.module';
-import { UserLocalStorage } from './features/user/types/UserLocalStorage';
+
+import { catchError } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
+import { db } from 'src/db.module';
+import { ProductDetails } from './features/products/types/ProductDetails';
+import { UserLocalStorage } from './features/user/types/UserLocalStorage';
+import { LoadingService } from './shared/services/loading.service';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,8 @@ export class AppComponent implements OnInit {
   isEmpty = false;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private loadingService: LoadingService
   ) { }
 
   ngOnInit(): void {
@@ -32,6 +34,7 @@ export class AppComponent implements OnInit {
         }
       },
       error: (err) => {
+        // if there are is no such a collection, we should create it 
         if (err.status == 404) {
           this.postProducts()
           return;
@@ -40,6 +43,10 @@ export class AppComponent implements OnInit {
       }
     })
 
+  }
+
+  get isLoading(){
+    return this.loadingService.isLoading;
   }
 
   postProducts() {
@@ -58,8 +65,9 @@ export class AppComponent implements OnInit {
                 return [err]
               })
             ).subscribe({
-              error: (err) => console.log(err.message),
-
+              error: (err) => {
+                console.log(err.message)
+              }
             })
           })
           // logout
@@ -67,7 +75,9 @@ export class AppComponent implements OnInit {
             next: (data) => {
               localStorage.removeItem(environment.INIT_ACCESS_TOKEN_LOCAL_STORAGE);
             },
-            error: (err) => console.log('logout err', err.message),
+            error: (err) => {
+              console.log('logout err', err.message)
+            },
           })
         },
         error: (err) => {

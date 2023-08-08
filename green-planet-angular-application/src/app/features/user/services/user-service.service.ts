@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment.development';
 import { UserLocalStorage } from '../types/UserLocalStorage';
 import { UserDetails } from '../types/UserDetails';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, switchMap} from 'rxjs';
+import { BehaviorSubject, switchMap } from 'rxjs';
 import { OrderProduct } from '../../products/types/OrderProduct';
 
 @Injectable({
@@ -23,7 +23,8 @@ export class UserService {
 
   constructor(
     private http: HttpClient,
-    private router: Router) {
+    private router: Router
+  ) {
     try {
       // Check if there is logged in user
       const lsUser = localStorage.getItem(this.USER_KEY_LS);
@@ -45,7 +46,9 @@ export class UserService {
 
     if (this.userDetails) {
       this.http.put(`/data/auth/${this.userDetails._id}`, { ...this.userDetails, myCart }).subscribe({
-        error: (err) => console.log(err)
+        error: (err) => {
+          console.log(err)
+        }
       })
     }
 
@@ -54,6 +57,7 @@ export class UserService {
         error: (err) => {
           // TODO HAndle error
           console.log(err)
+          
         }
       })
 
@@ -61,11 +65,13 @@ export class UserService {
     this.userDetails = undefined;
     this.userDetails$$.next(undefined);
     localStorage.removeItem(this.USER_KEY_LS)
+    
 
     this.router.navigate(['/'])
   }
 
   login(email: string, password: string) {
+    
     this.http
       .post<UserLocalStorage>('/users/login', { email, password })
       .subscribe({
@@ -89,6 +95,7 @@ export class UserService {
               }
             },
             error: (err) => {
+              
               // TODO HAndle error
               console.log(err)
             }
@@ -96,9 +103,11 @@ export class UserService {
         },
         error: (err) => {
           // TODO HAndle error
+          
           console.log(err)
         },
         complete: () => {
+          
           this.router.navigate(['/'])
         }
       })
@@ -111,7 +120,15 @@ export class UserService {
     password: string,
     address: string) {
 
+    console.log({
+      email,
+      firstName,
+      lastName,
+      password,
+      address
+    });
 
+    
     this.http.post<UserLocalStorage>('/users/register', {
       email,
       password
@@ -142,19 +159,23 @@ export class UserService {
           error: (error) => {
             // TODO HAndle error
             console.log(error)
+            
           }
         })
 
+        
         this.router.navigate(['/'])
       },
       error: (error) => {
         // TODO HAndle error
+        
         console.log(error)
       }
     })
   }
 
   getUserDetails() {
+    
     const query = encodeURIComponent(`_ownerId="${this.user?._id}"`)
 
     return this.http.get<UserDetails[]>(`/data/auth?where=${query}`)
@@ -162,22 +183,29 @@ export class UserService {
         next: (data) => {
           this.userDetails = data[0];
           this.userDetails$$.next(data[0])
+          
         },
         error: (err) => {
           // TODO HAndle error
           console.log(err.message);
+          
           return [err]
         }
       })
   }
 
   editUser(userInfo: UserDetails) {
+    
     return this.http
       .put<UserDetails>(`/data/auth/${userInfo._id}`, userInfo)
       .subscribe({
-        next: (data) => this.userDetails$$.next(data),
+        next: (data) => {
+          
+          this.userDetails$$.next(data)
+        },
         error: (err) => {
           // TODO HAndle error
+          
           console.log(err.message);
           return [err]
         }
@@ -185,12 +213,14 @@ export class UserService {
   }
 
   deleteUser() {
+    
     // Server don't support user delete!!!
     this.http.delete('/users/me').pipe(
       switchMap(async () => this.logout())
     ).subscribe({
       error: (error) => {
         // TODO Handle error
+        
         console.log(error)
       }
     })
@@ -218,7 +248,7 @@ export class UserService {
           })
 
           // if it is not in the cart -> add it
-          if(isProductMissing){
+          if (isProductMissing) {
             newCart.push(currPr);
           }
         })

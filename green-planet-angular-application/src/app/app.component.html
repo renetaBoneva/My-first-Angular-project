@@ -1,3 +1,5 @@
 <app-navigation />
-<router-outlet></router-outlet>
+<app-loading *ngIf="isLoading"/>
+<router-outlet *ngIf="!isLoading"></router-outlet>
+
 <app-footer />
