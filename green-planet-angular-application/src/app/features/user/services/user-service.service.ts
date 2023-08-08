@@ -43,7 +43,7 @@ export class UserService {
   }
 
   logout(): void {
-    const myCart = this.user?.myCart;
+    const myCart = this.user ? this.user.myCart : [];
     localStorage.setItem(this.CART_KEY_LS, JSON.stringify(myCart))
 
     if (this.userDetails) {
@@ -265,12 +265,39 @@ export class UserService {
           }
         }
       })
-    } else{
-      // if the user is not logged
-      console.log("TODO: make order for unlogged users");
-      // login like admin
-      // remove products from ls
-      // navigate to order confirmed      
+    } else {      
+      this.http
+        .post<UserLocalStorage>('/users/login', { email:'peter@abv.bg', password:'123456' })
+        .subscribe({
+          next: (user) => {
+            const { myCart, _id, accessToken } = { ...user }
+            user = { myCart, _id, accessToken }
+
+            localStorage.setItem(
+              this.USER_KEY_LS,
+              JSON.stringify(user)
+            );
+
+            this.http.post<Order>('/data/orders', {
+              orderNumber,
+              madeOnDate: String(madeOnDate),
+              address,
+              products,
+              total
+            }).subscribe({
+              next: () => {
+                  this.logout()
+                  this.router.navigate(['/order-confirmed'])
+              },
+              error: (err) => console.log(err.message)
+
+            })
+          },
+          error: (err) => {
+            // TODO HAndle error
+            console.log(err)
+          }
+        })
     }
   }
 
