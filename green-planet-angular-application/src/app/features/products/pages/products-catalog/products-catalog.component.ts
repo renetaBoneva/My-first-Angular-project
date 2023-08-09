@@ -82,7 +82,8 @@ export class ProductsCatalogComponent implements OnInit, OnDestroy {
       category: { flowers, outdoor, indoor, trees },
       price: { priceFrom, priceTo }
     }
-
+    
+    this.currentPage = 1;
     this.productsMainService.getProductsCollection(formattedFilters)
   }
 

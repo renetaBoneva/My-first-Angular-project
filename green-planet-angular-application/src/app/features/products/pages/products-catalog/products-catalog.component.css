@@ -153,7 +153,7 @@ aside form#filterForm button:hover {
 }
 
 .product-card {
-    flex: 1 0 40%;
+    flex: 0.5 0 40%;
 }
 
 .product-wrapper div{
