@@ -4,11 +4,15 @@ import { Observable, catchError, tap } from "rxjs";
 import { environment } from "src/environments/environment.development";
 import { UserLocalStorage } from "../../features/user/types/UserLocalStorage";
 import { LoadingService } from "src/app/shared/services/loading.service";
+import { NotificationService } from "src/app/shared/services/notification.service";
 
 const { apiUrl } = environment;
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-    constructor(private loadingService: LoadingService) { }
+    constructor(
+        private loadingService: LoadingService,
+        private notificationService: NotificationService
+    ) { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         this.loadingService.startLoading()
@@ -41,6 +45,7 @@ export class AuthInterceptor implements HttpInterceptor {
                 }),
                 catchError((err) => {
                     console.log(err.message);
+                    this.notificationService.showError(err.message)
                     this.loadingService.stopLoading()
                     return [err];
                 })

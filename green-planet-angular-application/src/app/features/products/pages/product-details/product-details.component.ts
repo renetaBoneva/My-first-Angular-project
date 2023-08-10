@@ -36,6 +36,6 @@ export class ProductDetailsComponent implements OnInit {
   
   addProductToCart(product: ProductDetails) {
     let productData: OrderProduct = { ...product, count: 0 };
-    return this.productsCountService.addProductToCart(productData)
+    return this.productsCountService.addProductToCart(productData, true)
   }
 }

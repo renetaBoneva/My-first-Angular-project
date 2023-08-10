@@ -29,7 +29,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
 
   addProductToCart(product: ProductDetails) {
     let productData: OrderProduct = { ...product, count: 0 };
-    this.productsCountService.addProductToCart(productData);
+    this.productsCountService.addProductToCart(productData, true);
   }
 
   ngOnDestroy(): void {

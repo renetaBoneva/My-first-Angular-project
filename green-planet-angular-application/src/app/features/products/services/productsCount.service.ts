@@ -4,15 +4,19 @@ import { environment } from 'src/environments/environment.development';
 import { OrderProduct } from '../types/OrderProduct';
 import { UserLocalStorage } from '../../user/types/UserLocalStorage';
 import { UserService } from '../../user/services/user-service.service';
+import { NotificationService } from 'src/app/shared/services/notification.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsCountService {
 
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    private notificationService: NotificationService
+    ) { }
 
-  addProductToCart(product: OrderProduct) {
+  addProductToCart(product: OrderProduct, isShowSuccess?: boolean) {
     if (this.userService.isLogged) {
       // for logged users
       const jsUser = localStorage.getItem(environment.USER_KEY_LOCAL_STORAGE);
@@ -54,6 +58,7 @@ export class ProductsCountService {
         )
       }
     }
+    isShowSuccess ?  this.notificationService.showSuccess(`${product.title} successfully added to cart!`) : '';
   }
 
   removeProductFromCart(product: OrderProduct) {

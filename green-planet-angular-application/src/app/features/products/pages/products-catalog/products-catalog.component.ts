@@ -89,7 +89,7 @@ export class ProductsCatalogComponent implements OnInit, OnDestroy {
 
   addProductToCart(product: ProductDetails) {
     let productData: OrderProduct = { ...product, count: 0 };
-    return this.productsCountService.addProductToCart(productData)
+    return this.productsCountService.addProductToCart(productData, true)
   }
 
   ngOnDestroy(): void {

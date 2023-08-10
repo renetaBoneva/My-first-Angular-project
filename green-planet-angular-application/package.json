@@ -20,6 +20,7 @@
     "@angular/router": "^16.1.0",
     "@types/jsonwebtoken": "^9.0.2",
     "jsonwebtoken": "^9.0.1",
+    "ngx-toastr": "^17.0.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "util": "^0.12.5",

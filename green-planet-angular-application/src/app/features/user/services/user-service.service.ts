@@ -73,18 +73,17 @@ export class UserService {
   }
 
   login(email: string, password: string) {
-
     this.http
-      .post<UserLocalStorage>('/users/login', { email, password })
-      .subscribe({
-        next: (user) => {
-          const { myCart, _id, accessToken } = { ...user }
-          user = { myCart, _id, accessToken }
-
-          this.user = user;
-          this.getUserDetails()
-          this.userDetails$.subscribe({
-            next: userDetails => {
+    .post<UserLocalStorage>('/users/login', { email, password })
+    .subscribe({
+      next: (user) => {
+        const { myCart, _id, accessToken } = { ...user }
+        user = { myCart, _id, accessToken }
+        
+        this.user = user;
+        this.getUserDetails()
+        this.userDetails$.subscribe({
+          next: userDetails => {
               if (userDetails) {
                 user.myCart = this.updateUserCartOnLogin(userDetails);
 
@@ -95,24 +94,14 @@ export class UserService {
 
                 this.user = user;
               }
-            },
-            error: (err) => {
-
-              // TODO HAndle error
-              console.log(err)
             }
           })
         },
-        error: (err) => {
-          // TODO HAndle error
-
-          console.log(err)
-        },
         complete: () => {
-
           this.router.navigate(['/'])
         }
       })
+      
   }
 
   register(
@@ -265,9 +254,9 @@ export class UserService {
           }
         }
       })
-    } else {      
+    } else {
       this.http
-        .post<UserLocalStorage>('/users/login', { email:'peter@abv.bg', password:'123456' })
+        .post<UserLocalStorage>('/users/login', { email: 'peter@abv.bg', password: '123456' })
         .subscribe({
           next: (user) => {
             const { myCart, _id, accessToken } = { ...user }
@@ -286,8 +275,8 @@ export class UserService {
               total
             }).subscribe({
               next: () => {
-                  this.logout()
-                  this.router.navigate(['/order-confirmed'])
+                this.logout()
+                this.router.navigate(['/order-confirmed'])
               },
               error: (err) => console.log(err.message)
 
