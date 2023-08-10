@@ -44,3 +44,9 @@ h2 {
 .error-p{
     color: #D81159;
 }
+
+@media (max-width:768px) {
+    #sign-in-section  {
+        width: 90%;
+    }
+}

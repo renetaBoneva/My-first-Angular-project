@@ -3,8 +3,8 @@
     position: relative;
     width: 100%;
     aspect-ratio: 16/9;
-    background: rgb(0,166,118);
-    background: linear-gradient(233deg, #601700 0%, rgba(224,208,193,1) 80%);
+    background: rgb(0, 166, 118);
+    background: linear-gradient(233deg, #601700 0%, rgba(224, 208, 193, 1) 80%);
     line-height: 0;
 }
 
@@ -41,4 +41,19 @@ main div.container section {
     justify-content: space-between;
     align-items: center;
     gap: 1em;
+}
+
+@media (max-width:768px) {
+    .best-sellers-container {
+        flex-direction: column;
+        gap: 2em
+    }
+}
+
+@media (max-width:1024px) {
+    .home-img a {
+        left: 10%;
+        right: 10%;
+    }
+
 }

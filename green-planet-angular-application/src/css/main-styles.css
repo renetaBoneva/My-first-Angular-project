@@ -25,7 +25,7 @@ div.container {
 
 h2 {
     text-align: center;
-    color: #601700;    
+    color: #601700;
     text-shadow: -3px 3px #D81159;
     font-size: 3em;
     padding-bottom: 0.5em;
@@ -62,12 +62,12 @@ svg {
 }
 
 .link-paraghaph,
-.link-paraghaph a{
+.link-paraghaph a {
     text-align: center;
     color: #D81159;
 }
 
-.link-paraghaph a:hover{
+.link-paraghaph a:hover {
     text-decoration: underline;
     font-weight: 900;
 }
@@ -95,4 +95,16 @@ form button {
     color: #D81159;
     text-shadow: -3px 3px #00A676;
     font-size: 3em;
+}
+
+@media (max-width:1024px) {
+    h3 {
+        font-size: 1.6em;
+    }
+    form button {
+        padding: 0.5em 1em;
+    }
+}
+
+@media (max-width:768px) {
 }

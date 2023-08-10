@@ -41,7 +41,13 @@ h2 {
     background-color: #601700;
 }
 
-.error-p{
+.error-p {
     text-align: center;
     color: #D81159;
+}
+
+@media (max-width:768px) {
+    #log-in-section {
+        width: 90%;
+    }
 }

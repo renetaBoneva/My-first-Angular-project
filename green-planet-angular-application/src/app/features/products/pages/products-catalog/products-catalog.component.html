@@ -2,38 +2,41 @@
     <div class="container">
         <aside>
             <form id="filterForm" #filterForm="ngForm" (ngSubmit)="handleFilter(filterForm)">
-                <ng-container class="filterSection checkboxSection">
-                    <h3>Category</h3>
-                    <label class="container">Outdoors
-                        <input type="checkbox" checked="true" name="outdoor" id="outdoor" ngModel
-                            #checkBoxOutdoors="ngModel">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="container">Indoors
-                        <input type="checkbox" checked="checked" name="indoor" id="indoor" ngModel
-                            #checkBoxIndoors="ngModel">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="container">Flowers
-                        <input type="checkbox" checked="checked" name="flowers" id="flowers" ngModel
-                            #checkBoxFlowers="ngModel">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="container">Trees
-                        <input type="checkbox" checked="checked" name="trees" id="trees" ngModel
-                            #checkBoxTrees="ngModel">
-                        <span class="checkmark"></span>
-                    </label>
+                <ng-container class="filtersWrappers">
+                    <ng-container class="filterSection checkboxSection">
+                        <h3>Category</h3>
+                        <label class="container">Outdoors
+                            <input type="checkbox" checked="true" name="outdoor" id="outdoor" ngModel
+                                #checkBoxOutdoors="ngModel">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container">Indoors
+                            <input type="checkbox" checked="checked" name="indoor" id="indoor" ngModel
+                                #checkBoxIndoors="ngModel">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container">Flowers
+                            <input type="checkbox" checked="checked" name="flowers" id="flowers" ngModel
+                                #checkBoxFlowers="ngModel">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container">Trees
+                            <input type="checkbox" checked="checked" name="trees" id="trees" ngModel
+                                #checkBoxTrees="ngModel">
+                            <span class="checkmark"></span>
+                        </label>
+                    </ng-container>
+
+                    <ng-container class="filterSection priceSection">
+                        <h3>Price</h3>
+                        <label for="from">from</label>
+                        <input type="number" name="priceFrom" id="priceFrom" placeholder="0" ngModel
+                            #priceForm="ngModel" [appNegativeNumber]="priceForm.value">
+                        <label for="to">to</label>
+                        <input type="number" name="priceTo" id="priceTo" placeholder="10" ngModel #priceTo="ngModel">
+                    </ng-container>
                 </ng-container>
 
-                <ng-container class="filterSection priceSection">
-                    <h3>Price</h3>
-                    <label for="from">from</label>
-                    <input type="number" name="priceFrom" id="priceFrom" placeholder="0" ngModel #priceForm="ngModel"
-                        [appNegativeNumber]="priceForm.value">
-                    <label for="to">to</label>
-                    <input type="number" name="priceTo" id="priceTo" placeholder="10" ngModel #priceTo="ngModel">
-                </ng-container>
                 <button type="submit" [disabled]="filterForm.invalid">Filter</button>
             </form>
         </aside>

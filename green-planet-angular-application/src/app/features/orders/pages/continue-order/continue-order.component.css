@@ -123,9 +123,24 @@ div.container {
     line-height: normal;
     font-size: 3rem;
     text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+    text-align: center;
 }
 
 #total-span,
 #total .currency {
     color: #601700;
+}
+
+@media (max-width:768px) {
+    #order-details {
+        flex-direction: column;
+    }
+
+    .product-card {
+        flex-direction: column;
+    }
+
+    #total {
+        padding: 0;
+    }
 }

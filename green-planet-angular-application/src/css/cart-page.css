@@ -86,3 +86,13 @@ form {
     justify-content: center;
     margin-top: 2em;
 }
+
+@media (max-width:800px) {
+    .product-card {
+        flex: 0 0 100%;
+    }
+
+    .product-wrapper div {
+        flex-direction: column;
+    }
+}

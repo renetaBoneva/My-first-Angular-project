@@ -74,6 +74,7 @@ main .container {
     line-height: normal;
     font-size: 3rem;
     text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+    text-align: center;
 }
 
 #total-span,
@@ -87,16 +88,26 @@ form {
     margin-top: 2em;
 }
 
-.link-paraghaph{
+.link-paraghaph {
     margin-top: 1em;
     font-size: 25px;
     font-weight: 500;
-    color: #00A676; 
-    cursor: pointer;   
+    color: #00A676;
+    cursor: pointer;
 }
 
 
 .link-paraghaph:hover {
     color: #D81159;
     text-decoration: underline;
+}
+
+@media (max-width:768px) {
+    .product-card {
+        flex-direction: column;
+    }
+
+    #total {
+        padding: 0;
+    }
 }

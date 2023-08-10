@@ -9,8 +9,8 @@
     width: 100%;
     aspect-ratio: 16/9;
     overflow: hidden;
-    background: rgb(0,166,118);
-    background: linear-gradient(233deg, #601700 0%, rgba(224,208,193,1) 80%);
+    background: rgb(0, 166, 118);
+    background: linear-gradient(233deg, #601700 0%, rgba(224, 208, 193, 1) 80%);
 }
 
 .product-wrapper {
@@ -55,4 +55,17 @@
     color: #D81159;
     background: #E0D0C1;
     border: 3px solid #601700;
+}
+
+@media (max-width:1024px) {
+    .product-wrapper div {
+        flex-direction: column;
+        gap: 1em;
+    }
+}
+
+@media (max-width:800px) {
+    .product-wrapper div {
+        flex-direction: row;
+    }
 }
