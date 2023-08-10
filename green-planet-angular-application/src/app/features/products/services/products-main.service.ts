@@ -1,9 +1,9 @@
-import { HttpClient, HttpUrlEncodingCodec } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { ProductDetails } from '../types/ProductDetails';
 import { Filters } from '../types/Filters';
-import { BehaviorSubject, catchError, filter, tap } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -34,9 +34,6 @@ export class ProductsMainService {
     return this.productsCollection$.subscribe({
       next: (allProducts) => {
         this.pageProducts$$.next(allProducts?.slice(offset, offset + productsCount))
-      },
-      error: (err) => {
-        console.log(err.message)
       }
     })
   }
@@ -70,15 +67,11 @@ export class ProductsMainService {
             data = this.customFilter(filters, data)
           }
           this.productsCollection$$.next(data)
-        },
-        error: (err) => {
-          console.log(err.message)
         }
       })
   }
 
   getProductDetails(id: string) {
-
     return this.http.get<ProductDetails>(`/data/products/${id}`)
   }
 

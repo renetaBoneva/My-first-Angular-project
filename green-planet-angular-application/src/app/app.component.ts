@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
   ) { }
 
   ngOnInit(): void {

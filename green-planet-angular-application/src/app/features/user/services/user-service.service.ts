@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, switchMap } from 'rxjs';
 
 import { environment } from 'src/environments/environment.development';
 import { UserLocalStorage } from '../types/UserLocalStorage';
 import { UserDetails } from '../types/UserDetails';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, switchMap } from 'rxjs';
 import { OrderProduct } from '../../products/types/OrderProduct';
 import { Order } from '../../products/types/Order';
-import { ProductsCountService } from '../../products/services/productsCount.service';
 
 @Injectable({
   providedIn: 'root'
@@ -47,21 +46,10 @@ export class UserService {
     localStorage.setItem(this.CART_KEY_LS, JSON.stringify(myCart))
 
     if (this.userDetails) {
-      this.http.put(`/data/auth/${this.userDetails._id}`, { ...this.userDetails, myCart }).subscribe({
-        error: (err) => {
-          console.log(err)
-        }
-      })
+      this.http.put(`/data/auth/${this.userDetails._id}`, { ...this.userDetails, myCart })
     }
 
     this.http.get('/users/logout')
-      .subscribe({
-        error: (err) => {
-          // TODO HAndle error
-          console.log(err)
-
-        }
-      })
 
     this.user = undefined;
     this.userDetails = undefined;
@@ -74,16 +62,16 @@ export class UserService {
 
   login(email: string, password: string) {
     this.http
-    .post<UserLocalStorage>('/users/login', { email, password })
-    .subscribe({
-      next: (user) => {
-        const { myCart, _id, accessToken } = { ...user }
-        user = { myCart, _id, accessToken }
-        
-        this.user = user;
-        this.getUserDetails()
-        this.userDetails$.subscribe({
-          next: userDetails => {
+      .post<UserLocalStorage>('/users/login', { email, password })
+      .subscribe({
+        next: (user) => {
+          const { myCart, _id, accessToken } = { ...user }
+          user = { myCart, _id, accessToken }
+
+          this.user = user;
+          this.getUserDetails()
+          this.userDetails$.subscribe({
+            next: userDetails => {
               if (userDetails) {
                 user.myCart = this.updateUserCartOnLogin(userDetails);
 
@@ -93,15 +81,13 @@ export class UserService {
                 );
 
                 this.user = user;
+                this.router.navigate(['/'])
               }
             }
           })
-        },
-        complete: () => {
-          this.router.navigate(['/'])
         }
       })
-      
+
   }
 
   register(
@@ -136,27 +122,15 @@ export class UserService {
           next: (data) => {
             this.userDetails = data;
             this.userDetails$$.next(data)
-          },
-          error: (error) => {
-            // TODO HAndle error
-            console.log(error)
-
           }
         })
 
-
         this.router.navigate(['/'])
-      },
-      error: (error) => {
-        // TODO HAndle error
-
-        console.log(error)
       }
     })
   }
 
   getUserDetails() {
-
     const query = encodeURIComponent(`_ownerId="${this.user?._id}"`)
 
     return this.http.get<UserDetails[]>(`/data/auth?where=${query}`)
@@ -164,13 +138,6 @@ export class UserService {
         next: (data) => {
           this.userDetails = data[0];
           this.userDetails$$.next(data[0])
-
-        },
-        error: (err) => {
-          // TODO HAndle error
-          console.log(err.message);
-
-          return [err]
         }
       })
   }
@@ -200,28 +167,15 @@ export class UserService {
           if (order) {
             this.router.navigate(['/order-confirmed'])
           }
-        },
-        error: (err) => {
-          // TODO HAndle error
-
-          console.log(err.message);
-          return [err]
         }
       })
   }
 
   deleteUser() {
-
     // Server don't support user delete!!!
     this.http.delete('/users/me').pipe(
       switchMap(async () => this.logout())
-    ).subscribe({
-      error: (error) => {
-        // TODO Handle error
-
-        console.log(error)
-      }
-    })
+    )
   }
 
   makeOrder(
@@ -277,14 +231,8 @@ export class UserService {
               next: () => {
                 this.logout()
                 this.router.navigate(['/order-confirmed'])
-              },
-              error: (err) => console.log(err.message)
-
+              }
             })
-          },
-          error: (err) => {
-            // TODO HAndle error
-            console.log(err)
           }
         })
     }

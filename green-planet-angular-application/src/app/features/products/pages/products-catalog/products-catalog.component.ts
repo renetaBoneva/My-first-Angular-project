@@ -33,8 +33,7 @@ export class ProductsCatalogComponent implements OnInit, OnDestroy {
 
     this.subscription.push(
       this.productsMainService.pageProducts$.subscribe({
-        next: (products) => this.products = products,
-        error: (err) => console.log(err.message)
+        next: (products) => this.products = products
       })
     )
 
@@ -49,8 +48,7 @@ export class ProductsCatalogComponent implements OnInit, OnDestroy {
               this.pageNums.push(i);
             }
           }
-        },
-        error: (err) => console.log(err.message)
+        }
       })
     )
   }
