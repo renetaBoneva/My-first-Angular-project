@@ -26,11 +26,15 @@ I sketched my application using Figma, and then implemented it using HTML and CS
 It's **e-commerce** website for plants where authorized and unauthorized users can make orders. ...
 There are **canActivate guards** on `/login` and `/register`, `/my-profile` page. I used an **interceptor** to handle the addition of an access token to the request header when a user is logged in. It also handles loading functionality.
 - Navigation for logged users
+
+![navigation logged user img]('https://github.com/renetaBoneva/My-first-Angular-project/blob/main/readme-images/navigation-logged-in-user.png')
 - Navigation for unlogged users
+
+![navigation unlogged user img]('https://github.com/renetaBoneva/My-first-Angular-project/blob/main/readme-images/navigation-unlogged-users.png')
 ### Landing page
 There is a link to products catalog and collection of best sellers on landing page.
 
-![landing page img]('')
+![landing page img]('https://github.com/renetaBoneva/My-first-Angular-project/blob/main/readme-images/localhost_4200_home.png')
 ### Login page
 ### Register page
 ### My profile page
@@ -41,7 +45,7 @@ There is a link to products catalog and collection of best sellers on landing pa
 ### Confirmed order page
 User should be redirected to `/order-confirmed` after successful order.
 
-![Confirmed order page img]('')
+![Confirmed order page img]('https://github.com/renetaBoneva/My-first-Angular-project/blob/main/readme-images/localhost_4200_order-confirmed.png')
 ### Error page
 I've used ngx-toastr library to manage error and success notification, but  in the case of attempting to access a non-existing page, the system should automatically redirect to `/error`.
 
