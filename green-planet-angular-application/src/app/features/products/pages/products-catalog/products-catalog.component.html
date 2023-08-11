@@ -2,8 +2,8 @@
     <div class="container">
         <aside>
             <form id="filterForm" #filterForm="ngForm" (ngSubmit)="handleFilter(filterForm)">
-                <ng-container class="filtersWrappers">
-                    <ng-container class="filterSection checkboxSection">
+                <div class="filtersWrappers">
+                    <div class="filterSection checkboxSection">
                         <h3>Category</h3>
                         <label class="container">Outdoors
                             <input type="checkbox" checked="true" name="outdoor" id="outdoor" ngModel
@@ -25,17 +25,17 @@
                                 #checkBoxTrees="ngModel">
                             <span class="checkmark"></span>
                         </label>
-                    </ng-container>
+                    </div>
 
-                    <ng-container class="filterSection priceSection">
+                    <div class="filterSection priceSection">
                         <h3>Price</h3>
                         <label for="from">from</label>
                         <input type="number" name="priceFrom" id="priceFrom" placeholder="0" ngModel
                             #priceForm="ngModel" [appNegativeNumber]="priceForm.value">
                         <label for="to">to</label>
                         <input type="number" name="priceTo" id="priceTo" placeholder="10" ngModel #priceTo="ngModel">
-                    </ng-container>
-                </ng-container>
+                    </div>
+                </div>
 
                 <button type="submit" [disabled]="filterForm.invalid">Filter</button>
             </form>

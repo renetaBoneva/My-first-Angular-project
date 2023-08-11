@@ -4,7 +4,6 @@ nav#main-nav {
 }
 
 #main-nav div.container {
-    padding: 0 2em;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -12,18 +11,8 @@ nav#main-nav {
 
 #main-nav .brand a {
     font-family: Pacifico, serif;
-    font-size: 44px;
     color: #601700;
     text-shadow: -3px 3px #A76D60;
-}
-
-#main-nav ul {
-    list-style-type: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 1em;
 }
 
 .regular-link {
@@ -33,10 +22,6 @@ nav#main-nav {
     font-weight: bold;
 }
 
-.regular-link:hover {
-    text-decoration: underline;
-    color: rgba(96, 23, 0, 0.5);
-}
 
 #cart-link {
     font: 20px/0 Josefin Sans, sans-serif;
@@ -62,4 +47,93 @@ nav#main-nav {
 
 #cart-link:hover svg {
     fill: #601700;
+}
+
+@media (min-width:850px) {
+    .desktop-version {
+        display: block;
+    }
+
+    .mobile-version {
+        display: none;
+    }
+
+    #main-nav div.container {
+        padding: 0 2em;
+    }
+
+    #main-nav ul {
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+    }
+
+    #main-nav .brand a {
+        font-size: 44px;
+    }
+
+    .regular-link:hover {
+        text-decoration: underline;
+        color: rgba(96, 23, 0, 0.5);
+    }
+}
+
+@media (max-width:850px) {
+    #main-nav div.container {
+        padding: 0;
+    }
+
+    .mobile-version {
+        display: flex;
+        gap: 1em;
+        align-items: center;
+    }
+
+    .desktop-version {
+        display: none;
+    }
+
+    #main-nav .brand a {
+        font-size: 28px;
+    }
+
+    #nav-link {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+    }
+
+    .mobile-nav-wrapper:hover #nav-link {
+        display: flex;
+    }
+    
+    .mobile-nav-wrapper:hover #nav-link {
+        display: flex;
+        cursor: pointer;
+        width: 100%;
+        left: 0;
+        z-index: 10;
+        margin-top: 1em;
+        text-align: center;
+        background: #E0D0C1;
+    }
+
+    .mobile-nav-wrapper #nav-link li:hover {
+        background-color: #601700;
+    }
+
+    .mobile-nav-wrapper #nav-link li:hover .regular-link {
+        color: #E0D0C1;
+    }
+
+    #cart-link {
+        padding: 0.5em 1em;
+    }
+
+    #cart-text-btn {
+        display: none;
+    }
 }

@@ -38,6 +38,8 @@ aside form#filterForm h3 {
 
 .filterSection {
     margin-bottom: 1em;
+    display: flex;
+    flex-direction: column;
 }
 
 /* The container */
@@ -207,15 +209,31 @@ aside form#filterForm button:hover {
 @media (max-width:1024px) {
     main div.container {
         flex-direction: column;
+        align-items: center;
     }
 
-    .filtersWrappers{
+    aside {
+        flex: 0 0 100%;
+    }
+
+    .filtersWrappers {
         display: flex;
         justify-content: space-between;
+        flex-direction: row;
+        gap: 5em;
     }
 }
 
 @media (max-width:768px) {
+    main div.container {
+        align-items: center;
+    }
+
+    .filtersWrappers {
+        flex-direction: column;
+        gap: 1em;
+    }
+
     .product-card {
         flex: 0 0 100%;
     }

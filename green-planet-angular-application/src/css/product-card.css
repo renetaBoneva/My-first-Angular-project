@@ -68,4 +68,9 @@
     .product-wrapper div {
         flex-direction: row;
     }
+
+    .product-wrapper div button {
+        font-size: 1.1rem;
+        padding: 0.5em;
+    }
 }
