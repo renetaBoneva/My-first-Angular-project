@@ -20,7 +20,7 @@ div.container {
 }
 
 .product-image {
-    flex-basis: 25%;
+    flex: 1 0 40%;
     aspect-ratio: 16/9;
     overflow: hidden;
 }
@@ -129,6 +129,10 @@ div.container {
 #total-span,
 #total .currency {
     color: #601700;
+}
+
+@media (max-width:1024px) {
+
 }
 
 @media (max-width:768px) {

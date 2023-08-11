@@ -89,8 +89,14 @@
     display: block;
 }
 
-.hideParagraph{
+.hideParagraph {
     max-height: 0.5em;
     overflow: hidden;
     color: rgba(0, 0, 0, 0);
+}
+
+@media (max-width:768px) {
+    .product-details-container {
+        flex-direction: column;
+    }
 }

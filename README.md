@@ -10,6 +10,7 @@
 | - [Register page](#register-page)
 | - [My profile page](#my-profile-page)
 | - [Products page](#products-page)
+| - [Product details page](#product-details-page)
 | - [Cart page](#cart-page)
 | - [Continue order page](#continue-order-page)
 | - [Confirmed order page](#onfirmed-order-page)
@@ -28,18 +29,22 @@ There are **canActivate guards** on `/login` and `/register`, `/my-profile` page
 - Navigation for unlogged users
 ### Landing page
 There is a link to products catalog and collection of best sellers on landing page.
+
 ![landing page img]('')
 ### Login page
 ### Register page
 ### My profile page
 ### Products page
+### Product details page
 ### Cart page
 ### Continue order page
 ### Confirmed order page
 User should be redirected to `/order-confirmed` after successful order.
-![Confirmed order pageimg]('')
+
+![Confirmed order page img]('')
 ### Error page
 I've used ngx-toastr library to manage error and success notification, but  in the case of attempting to access a non-existing page, the system should automatically redirect to `/error`.
+
 ![error page img]('')
 ## Getting Started
 ## Backend
