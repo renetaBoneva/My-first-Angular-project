@@ -27,7 +27,7 @@ It's **e-commerce** website for plants where authorized and unauthorized users c
 There are **canActivate guards** on `/login` and `/register`, `/my-profile` page. I used an **interceptor** to handle the addition of an access token to the request header when a user is logged in. It also handles loading functionality.
 - Navigation for logged users
 
-![navigation logged user img]('https://github.com/renetaBoneva/My-first-Angular-project/blob/main/readme-images/navigation-logged-in-user.png')
+![navigation logged user img](https://github.com/renetaBoneva/My-first-Angular-project/blob/main/readme-images/navigation-logged-in-user.png)
 - Navigation for unlogged users
 
 ![navigation unlogged user img]('https://github.com/renetaBoneva/My-first-Angular-project/blob/main/readme-images/navigation-unlogged-users.png')
