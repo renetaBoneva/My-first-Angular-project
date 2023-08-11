@@ -30,28 +30,45 @@ There are **canActivate guards** on `/login` and `/register`, `/my-profile` page
 ![navigation logged user img](https://github.com/renetaBoneva/My-first-Angular-project/blob/main/readme-images/navigation-logged-in-user.png)
 - Navigation for unlogged users
 
-![navigation unlogged user img]('https://github.com/renetaBoneva/My-first-Angular-project/blob/main/readme-images/navigation-unlogged-users.png')
+![navigation unlogged user img](https://github.com/renetaBoneva/My-first-Angular-project/blob/main/readme-images/navigation-unlogged-users.png)
 ### Landing page
 There is a link to products catalog and collection of best sellers on landing page.
 
-![landing page img]('https://github.com/renetaBoneva/My-first-Angular-project/blob/main/readme-images/localhost_4200_home.png')
+![landing page img](https://github.com/renetaBoneva/My-first-Angular-project/blob/main/readme-images/localhost_4200_home.png)
 ### Login page
+
+![login page img](https://github.com/renetaBoneva/My-first-Angular-project/blob/main/readme-images/localhost_4200_login.png)
 ### Register page
+
+![register page img](https://github.com/renetaBoneva/My-first-Angular-project/blob/main/readme-images/localhost_4200_register.png)
 ### My profile page
+
+![my profile page img](https://github.com/renetaBoneva/My-first-Angular-project/blob/main/readme-images/localhost_4200_my-profile.png)
+
+![my profile page img](https://github.com/renetaBoneva/My-first-Angular-project/blob/main/readme-images/localhost_4200_profile-edit.png)
 ### Products page
+
+![products page img](https://github.com/renetaBoneva/My-first-Angular-project/blob/main/readme-images/localhost_4200_catalog.png)
 ### Product details page
+
+![product details page img](https://github.com/renetaBoneva/My-first-Angular-project/blob/main/readme-images/localhost_4200_product-details.png)
 ### Cart page
+
+![cart page img](https://github.com/renetaBoneva/My-first-Angular-project/blob/main/readme-images/localhost_4200_cart.png)
+![empty cart page img](https://github.com/renetaBoneva/My-first-Angular-project/blob/main/readme-images/localhost_4200_empty-cart.png)
 ### Continue order page
+
+![continue order page img](https://github.com/renetaBoneva/My-first-Angular-project/blob/main/readme-images/localhost_4200_continue-order.png)
 ### Confirmed order page
 User should be redirected to `/order-confirmed` after successful order.
 
-![Confirmed order page img]('https://github.com/renetaBoneva/My-first-Angular-project/blob/main/readme-images/localhost_4200_order-confirmed.png')
+![Confirmed order page img](https://github.com/renetaBoneva/My-first-Angular-project/blob/main/readme-images/localhost_4200_order-confirmed.png)
 ### Error page
 I've used ngx-toastr library to manage error and success notification, but  in the case of attempting to access a non-existing page, the system should automatically redirect to `/error`.
 
-![error page img]('')
+![error page img](https://github.com/renetaBoneva/My-first-Angular-project/blob/main/readme-images/localhost_4200_error.png)
 ## Getting Started
 ## Backend
 The backend is built using Node.js, Express.js and JWT for authentication.
 
-[I've used SoftUni Practice Server]('https://github.com/softuni-practice-server/softuni-practice-server/tree/master')
+[I've used SoftUni Practice Server](https://github.com/softuni-practice-server/softuni-practice-server/tree/master)
