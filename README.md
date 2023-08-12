@@ -45,7 +45,7 @@ This is a template-driven registration form utilizing ngModel validators for inp
 ### My profile page
 This page can only be accessed by users who are logged in. It represents the user's personal account data and their orders. There are options to edit and delete the account. The edit form is implemented using a reactive form.When clicking the delete button, a browser alert confirmation appears in case you clicked by mistake.
 
-NOTE: The practice server does not support user delete, so you will still be able to log in even after a successful deletion
+**NOTE:** The practice server does not support user delete, so you will still be able to log in even after a successful deletion
 
 ![my profile page img](https://github.com/renetaBoneva/My-first-Angular-project/blob/main/readme-images/localhost_4200_my-profile.png)
 
