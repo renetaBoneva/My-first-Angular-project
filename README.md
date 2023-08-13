@@ -79,10 +79,10 @@ I've used ngx-toastr library to manage error and success notification, but  in t
 
 * Clone the repo from github.
 * Open integrated terminal on green-planet-angular-application directory and run `npm install`.
-* Change directory `cd ../server`
+* Change directory `cd ../server`.
 * Run `node server.js`.
-* Make sure you have the [Angular CLI](https://github.com/angular/angular-cli#installation) installed globally.
-* Change directory `cd ../green-planet-angular-application`
+* Make sure you have the [Angular CLI](https://github.com/angular/angular-cli#installation) installed globally. If you don't have it, run `npm install -g @angular/cli`.
+* Change directory `cd ../green-planet-angular-application`.
 * Run `ng serve` for a dev server. 
 * Navigate to `http://localhost:4200/` and reload the page.
 
