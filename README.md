@@ -87,6 +87,6 @@ I've used ngx-toastr library to manage error and success notification, but  in t
 * Navigate to `http://localhost:4200/` and reload the page.
 
 ## Backend
-The backend is built using Node.js, Express.js and JWT for authentication.
+The backend is built using Node.js and Express.js.
 
 [I've used SoftUni Practice Server](https://github.com/softuni-practice-server/softuni-practice-server/tree/master)
