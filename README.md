@@ -76,6 +76,16 @@ I've used ngx-toastr library to manage error and success notification, but  in t
 
 ![error page img](https://github.com/renetaBoneva/My-first-Angular-project/blob/main/readme-images/localhost_4200_error.png)
 ## Getting Started
+
+* Clone the repo from github.
+* Open integrated terminal on green-planet-angular-application directory and run `npm install`.
+* Change directory `cd ../server`
+* Run `node server.js`.
+* Make sure you have the [Angular CLI](https://github.com/angular/angular-cli#installation) installed globally.
+* Change directory `cd ../green-planet-angular-application`
+* Run `ng serve` for a dev server. 
+* Navigate to `http://localhost:4200/` and reload the page.
+
 ## Backend
 The backend is built using Node.js, Express.js and JWT for authentication.
 
